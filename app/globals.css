@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+    font-family: quicksand;
+    src: url("../assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+    font-family: uncial;
+    src: url("../assets/fonts/Uncial/UncialAntiqua-Regular.ttf");
 }
+.font-quicksand{
+    font-family: quicksand;
+}
+.font-uncial{
+    font-family: uncial
+}
+@layer utilities {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+  .typing {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #4ade80; 
+    animation: typing 4s steps(60) 1 normal forwards, blink .75s step-end infinite;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #4ade80 }
+  }
+
+
+  .animate-circuit-fast {
+
+    stroke-dasharray: 30 300;
+    animation: circuitFlow 2s linear infinite;
+  }
+
+  .animate-circuit-slow {
+    stroke-dasharray: 40 400;
+    animation: circuitFlow 3s linear infinite reverse;
+  }
+
+  @keyframes circuitFlow {
+    to {
+      stroke-dashoffset: -1000;
+    }
+  }
+
+
+
+  .pipeline-step {
+
+    animation: digitalPulse 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  @keyframes digitalPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); filter: brightness(1); }
+    10%, 20% { opacity: 1; transform: scale(1.02); filter: brightness(1.2); }
+  }
+
+
+  @keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.3); }
+    50% { box-shadow: 0 0 35px rgba(34,197,94,0.3); border-color: rgba(34,197,94,0.8); }
+  }
+  
 }

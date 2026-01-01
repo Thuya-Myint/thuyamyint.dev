@@ -37,7 +37,6 @@ export default function Header() {
 
     return (
         <header className="flex justify-between items-center px-6 py-4 bg-black/90 backdrop-blur-md shadow-lg text-white fixed w-full z-50">
-
             {/* Left: Title + Tech Stack */}
             <div className="flex items-center gap-3">
                 <h1 className="text-2xl font-bold font-quicksand relative">{t("title")}</h1>

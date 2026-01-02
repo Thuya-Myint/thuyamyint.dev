@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { SiTerraform, SiGithubactions, SiMongodb, SiReact, SiNextdotjs, SiRedis } from "react-icons/si"
 import { FaGolang } from "react-icons/fa6"
 import { FaNodeJs } from "react-icons/fa6";
-
+import { VscTerminalBash } from "react-icons/vsc";
 export default function PipelineShowCase() {
 
     const logs = [
@@ -73,8 +73,11 @@ export default function PipelineShowCase() {
     }, [displayed])
 
     return (
-        <div className=" w-md  mx-auto mt-10">
-            <div className="bg-[#0b0e14] border border-neutral-700/80 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">
+        <div className=" w-md  mx-auto mt-10 relative cursor-pointer">
+            <div className="w-full h-full flex items-center  opacity-10 animate-pulse justify-center absolute">
+                <VscTerminalBash className="text-white  " size={100} />
+            </div>
+            <div className="bg-[#0b0e14]   border border-neutral-700/80 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">
 
                 {/* Top Bar */}
                 <div className="px-4 py-3 flex items-center justify-between bg-[#111111] border-b border-neutral-800">
@@ -87,14 +90,14 @@ export default function PipelineShowCase() {
 
                     {/* Right tech icons */}
                     <div className="flex items-center gap-2 text-gray-400">
-                        <SiRedis size={14} title="Redis" />
-                        <SiTerraform size={14} title="Terraform" />
-                        <SiGithubactions size={14} title="GitHub Actions" />
-                        <SiReact size={14} title="React" />
-                        <SiNextdotjs size={14} title="Next.js" />
-                        <FaNodeJs size={14} title="Node.js" />
-                        <SiMongodb size={14} title="MongoDB" />
-                        <FaGolang size={14} title="Go" />
+                        <SiRedis className="text-red-500" size={14} title="Redis" />
+                        <SiTerraform className="text-sky-800" size={14} title="Terraform" />
+                        <SiGithubactions className="text-blue-300" size={14} title="GitHub Actions" />
+                        <SiReact size={14} className="text-blue-600" title="React" />
+                        <SiNextdotjs size={14} className="text-neutral-500" title="Next.js" />
+                        <FaNodeJs size={14} className="text-green-300" title="Node.js" />
+                        <SiMongodb size={14} className="text-green-600" title="MongoDB" />
+                        <FaGolang size={14} className="text-blue-400" title="Go" />
                     </div>
                 </div>
 

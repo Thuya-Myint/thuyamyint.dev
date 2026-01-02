@@ -1,8 +1,16 @@
 {
-    "title": "ThuyaMyint",
-    "description": "Developer Portfolio",
+    "title": "Thuyamyint",
+    "description": "Full-Stack Developer Portfolio",
     "projects": "Projects",
-    "about": "About Me",
+    "intro": "Introduction",
+    "journey": "Development Journey",
+    "experience": "Experience",
     "contact": "Contact",
-    "switch_language": "日本語"
+    "about": "About Me",
+    "hire": "Hire Me",
+    "greeting": "Hi, I’m",
+    "role": "Full-Stack Developer",
+    "tagline": "Engineer · Architect · Problem Solver",
+    "descriptionAboutMe": "I deliver end-to-end software solutions. I design, build, and operate scalable systems across frontend, backend, infrastructure, deployment, and operations. My expertise includes system architecture, CI/CD automation, cloud resource management, and shipping reliable, production-ready applications.",
+    "stack": "Next.js · Go · Node.js · AWS · CI/CD · Infrastructure"
 }

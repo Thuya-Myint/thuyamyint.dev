@@ -1,8 +1,16 @@
 {
-    "title": "ツーヤ・ミャイン",
-    "description": "開発者ポートフォリオ",
+    "title": "スイアー・ミント",
+    "description": "フルスタック開発者のポートフォリオ",
     "projects": "プロジェクト",
-    "about": "自己紹介",
-    "contact": "コンタクト",
-    "switch_language": "English"
+    "intro": "自己紹介",
+    "journey": "開発の歩み",
+    "experience": "経験",
+    "contact": "お問い合わせ",
+    "about": "私について",
+    "hire": "採用について",
+    "greeting": "こんにちは、",
+    "role": "フルスタックエンジニア",
+    "tagline": "エンジニア · アーキテクト · 問題解決者",
+    "descriptionAboutMe": "フロントエンド、バックエンド、インフラ、デプロイ、運用までを含むエンドツーエンドのソフトウェア開発を行っています。システム設計、CI/CDの自動化、クラウドリソース管理、本番環境で安定稼働するアプリケーションの構築に強みがあります。",
+    "stack": "Next.js · Go · Node.js · AWS · CI/CD · インフラ"
 }

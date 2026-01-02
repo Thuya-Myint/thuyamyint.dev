@@ -5,6 +5,7 @@ export interface AppContextType {
     locale: Locale;
     setLocale: (l: Locale) => void;
     t: (key: string) => string;
+    toggleLocale: () => void
 
 
 }

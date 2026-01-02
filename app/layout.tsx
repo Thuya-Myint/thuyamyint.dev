@@ -11,8 +11,9 @@ export const metadata: Metadata = {
   title: "Thuyamyint",
   description: "Developer Portfolio",
   icons: {
-
+    icon: "./tm.png"
   }
+
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,102 +1,97 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: quicksand;
-    src: url("../assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf");
-}
+@theme {
+  /* Fonts */
+  --font-quicksand: var(--font-quicksand);
+  --font-uncial: var(--font-uncial);
 
-@font-face {
-    font-family: uncial;
-    src: url("../assets/fonts/Uncial/UncialAntiqua-Regular.ttf");
-}
-.font-quicksand{
-    font-family: quicksand;
-}
-.font-uncial{
-    font-family: uncial
-}
-@layer utilities {
+  /* Animations - Defining them here makes them Tailwind utilities automatically */
+  --animate-gradient-move: gradientMove 18s ease infinite;
+  --animate-float-slow: floatSlow 22s ease-in-out infinite;
+  --animate-float-slower: floatSlower 28s ease-in-out infinite;
+  --animate-pipeline-step: digitalPulse 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  --animate-typing: typing 4s steps(60) 1 normal forwards,
+    blink 0.75s step-end infinite;
 
-
-  .typing {
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid #4ade80; 
-    animation: typing 4s steps(60) 1 normal forwards, blink .75s step-end infinite;
-  }
-
+  /* Keyframes */
   @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-
-  @keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: #4ade80 }
-  }
-
-
-  .animate-circuit-fast {
-
-    stroke-dasharray: 30 300;
-    animation: circuitFlow 2s linear infinite;
-  }
-
-  .animate-circuit-slow {
-    stroke-dasharray: 40 400;
-    animation: circuitFlow 3s linear infinite reverse;
-  }
-
-  @keyframes circuitFlow {
+    from {
+      width: 0;
+    }
     to {
-      stroke-dashoffset: -1000;
+      width: 100%;
     }
   }
-
-
-
-  .pipeline-step {
-
-    animation: digitalPulse 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  @keyframes blink {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #4ade80;
+    }
   }
-
+  @keyframes circuitFlow {
+    to {
+      stroke-dashoffset: -1000px;
+    } /* Added px */
+  }
   @keyframes digitalPulse {
-    0%, 100% { opacity: 0.7; transform: scale(1); filter: brightness(1); }
-    10%, 20% { opacity: 1; transform: scale(1.02); filter: brightness(1.2); }
+    0%,
+    100% {
+      opacity: 0.7;
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    10%,
+    20% {
+      opacity: 1;
+      transform: scale(1.02);
+      filter: brightness(1.2);
+    }
   }
-
-
-  @keyframes livePulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.3); }
-    50% { box-shadow: 0 0 35px rgba(34,197,94,0.3); border-color: rgba(34,197,94,0.8); }
+  @keyframes floatSlow {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(40px);
+    }
+  }
+  @keyframes floatSlower {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
   }
   @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }
 
-@keyframes floatSlow {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(40px); }
-    100% { transform: translateY(0px); }
+/* Helper Utilities */
+.typing {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #4ade80;
 }
 
-@keyframes floatSlower {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-30px); }
-    100% { transform: translateY(0px); }
+.animate-circuit-fast {
+  stroke-dasharray: 30 300;
+  animation: circuitFlow 2s linear infinite;
 }
 
-.animate-gradientMove {
-    animation: gradientMove 18s ease infinite;
-}
-
-.animate-floatSlow {
-    animation: floatSlow 22s ease-in-out infinite;
-}
-
-.animate-floatSlower {
-    animation: floatSlower 28s ease-in-out infinite;
-}
+.animate-circuit-slow {
+  stroke-dasharray: 40 400;
+  animation: circuitFlow 3s linear infinite reverse;
 }

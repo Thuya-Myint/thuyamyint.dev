@@ -13,8 +13,8 @@ export const NAV_ITEMS = [
 
 export const P_NAV = [
 
-    { label: "contact", href: "/works", icon: MdOutlineContacts },
-    { label: "about", href: "/", icon: GiSecretBook },
-    { label: "hire", href: "/experience", icon: LuMousePointerClick },
+    { label: "contact", href: "/contact", icon: MdOutlineContacts },
+    { label: "about", href: "/about", icon: GiSecretBook },
+    { label: "hire", href: "/hire", icon: LuMousePointerClick },
 
 ]

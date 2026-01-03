@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Thuyamyint",
   description: "Developer Portfolio",
   icons: {
-    icon: "./tm.png",
+    icon: "./t.png",
   },
 };
 

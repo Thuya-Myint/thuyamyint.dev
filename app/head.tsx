@@ -34,7 +34,7 @@ export default function Head() {
       <meta name="twitter:image" content={image} />
 
       {/* Optional: favicon */}
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/assets/share.png" />
     </>
   );
 }

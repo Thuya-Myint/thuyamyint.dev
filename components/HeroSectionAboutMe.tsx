@@ -28,13 +28,6 @@ export default function HeroSectionAboutMe() {
 
   return (
     <div className="flex text-2xl items-center font-quicksand gap-6">
-      <Image
-        src={tm}
-        alt="Thuyamyint"
-        className="rounded-full lg:block hidden border-4 border-neutral-600/0 w-40 h-40 object-cover"
-        priority
-      />
-
       <div className="flex flex-col gap-4 lg:max-w-2xl w-full">
         <h1 className="text-4xl font-extrabold tracking-tight text-white">
           {t("greeting")}

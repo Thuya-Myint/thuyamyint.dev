@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+:root {
+  --font-quicksand: 'Quicksand', sans-serif;
+}
+
+body {
+  font-family: var(--font-quicksand);
+}
+
 @theme {
   /* Fonts */
   --font-quicksand: var(--font-quicksand);
@@ -20,6 +28,47 @@
     }
     to {
       width: 100%;
+    }
+  }
+  /* Slow light sweep */
+  @keyframes slow-pan {
+    0% {
+      transform: translateX(-20%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(20%) rotate(180deg);
+    }
+  }
+  @keyframes diagonalLightMove {
+  0% {
+    transform: translateX(-20%) translateY(-20%);
+  }
+  100% {
+    transform: translateX(20%) translateY(20%);
+  }
+}
+
+
+
+  
+  /* Floating blobs */
+  @keyframes floatSlow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(40px);
+    }
+  }
+
+  @keyframes floatSlower {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-30px);
     }
   }
   @keyframes blink {
@@ -50,24 +99,37 @@
       filter: brightness(1.2);
     }
   }
-  @keyframes floatSlow {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(40px);
-    }
+  @keyframes slow-pan {
+  0% {
+    transform: translateX(-20%) rotate(0deg);
   }
-  @keyframes floatSlower {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-30px);
-    }
+  100% {
+    transform: translateX(20%) rotate(180deg);
   }
+}
+
+
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+}
+
+@keyframes floatSlower {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+  
   @keyframes gradientMove {
     0%,
     100% {
@@ -95,3 +157,44 @@
   stroke-dasharray: 40 400;
   animation: circuitFlow 3s linear infinite reverse;
 }
+ .animate-floatSlow {
+  animation: floatSlow 24s ease-in-out infinite;
+}
+
+.animate-floatSlower {
+  animation: floatSlower 30s ease-in-out infinite;
+}
+  .animate-slow-pan {
+  animation: slow-pan 45s linear infinite;
+}
+.animate-diagonal-light {
+  animation: diagonalLightMove 40s linear infinite;
+}
+
+@layer utilities {
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+

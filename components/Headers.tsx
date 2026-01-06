@@ -1,7 +1,7 @@
 "use client";
 
 import { useApp } from "@/context/AppProvider";
-import { NAV_ITEMS, P_NAV } from "@/configs/navbar.config";
+import { NAV_ITEMS, P_NAV } from "@/configs/navbar";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
@@ -88,7 +88,7 @@ export default function Header() {
             {isModalOpen && (
               <div
                 className="
-                  absolute right-0 w-44
+                  absolute p-2 right-0 w-44
                   rounded-xl bg-[#0b0e14]
                   border border-neutral-700 shadow-xl
                 "
@@ -100,7 +100,7 @@ export default function Header() {
                     className="
                       flex items-center gap-2 px-4 py-2 text-white
                       hover:text-black
-                      hover:bg-linear-to-r hover:from-green-500 hover:to-blue-500
+                      hover:bg-linear-to-r hover:from-green-100 rounded-lg hover:to-blue-100
                       transition
                     "
                   >
@@ -123,16 +123,14 @@ export default function Header() {
             "
           >
             <span
-              className={`absolute transition-all duration-300 ${
-                locale === "jp" ? "top-2 opacity-100" : "-top-6 opacity-0"
-              }`}
+              className={`absolute transition-all duration-300 ${locale === "jp" ? "top-2 opacity-100" : "-top-6 opacity-0"
+                }`}
             >
               あ
             </span>
             <span
-              className={`absolute transition-all duration-300 ${
-                locale === "en" ? "bottom-2 opacity-100" : "-bottom-6 opacity-0"
-              }`}
+              className={`absolute transition-all duration-300 ${locale === "en" ? "bottom-2 opacity-100" : "-bottom-6 opacity-0"
+                }`}
             >
               A
             </span>
@@ -147,10 +145,9 @@ export default function Header() {
             lg:hidden w-10 h-10 rounded-full
             flex items-center justify-center
             transition-all duration-300
-            ${
-              hamburgerOpen
-                ? "rotate-180 text-blue-500 bg-white/20"
-                : "text-neutral-300 bg-neutral-700"
+            ${hamburgerOpen
+              ? "rotate-180 text-blue-500 bg-white/20"
+              : "text-neutral-300 bg-neutral-700"
             }
           `}
         >
@@ -218,16 +215,14 @@ export default function Header() {
           "
         >
           <span
-            className={`absolute transition-all duration-300 ${
-              locale === "jp" ? "top-2 opacity-100" : "-top-6 opacity-0"
-            }`}
+            className={`absolute transition-all duration-300 ${locale === "jp" ? "top-2 opacity-100" : "-top-6 opacity-0"
+              }`}
           >
             日本語
           </span>
           <span
-            className={`absolute transition-all duration-300 ${
-              locale === "en" ? "bottom-2 opacity-100" : "-bottom-6 opacity-0"
-            }`}
+            className={`absolute transition-all duration-300 ${locale === "en" ? "bottom-2 opacity-100" : "-bottom-6 opacity-0"
+              }`}
           >
             English
           </span>

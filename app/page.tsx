@@ -1,10 +1,12 @@
 import HeroSection from '@/components/HeroSection'
+import TechStacks from '@/components/TechStacks'
 export default function Home() {
   return (
-    <div className='flex items-center justify-center bg-black h-screen'>
+    <div className=''>
       <main>
         <HeroSection />
       </main>
+      <TechStacks />
     </div>
   )
 }

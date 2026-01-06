@@ -10,7 +10,7 @@ import {
   SiDocker,
   SiKubernetes,
   SiNginx,
-  SiRabbitmq,
+  SiRedis
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 
@@ -50,11 +50,14 @@ export const techStacks = [
     icons: [
       { icon: SiMongodb, color: "#47A248", label: "MongoDB" },
       { icon: SiPostgresql, color: "#336791", label: "PostgreSQL" },
+      { icon: SiRedis, color: "#dc382d" },
     ],
     descriptionKey: "stackData",
     additionalLibraries: [
       { text: "Schema Design", color: "#34d399" },
       { text: "Index Optimization", color: "#f87171" },
+      { text: "Caching", color: "#dc382d" }
+
     ],
   },
 
@@ -78,7 +81,6 @@ export const techStacks = [
       { icon: SiDocker, color: "#2496ED", label: "Docker" },
       { icon: SiKubernetes, color: "#326CE5", label: "Kubernetes" },
       { icon: SiNginx, color: "#009639", label: "NGINX" },
-      { icon: SiRabbitmq, color: "#FF6600", label: "RabbitMQ" },
     ],
     descriptionKey: "stackMicroservices",
     additionalLibraries: [

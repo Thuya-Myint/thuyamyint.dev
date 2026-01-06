@@ -175,8 +175,8 @@ export default function Header() {
           </div>
 
           <div className="flex flex-col text-white">
-            <span className="text-sm font-semibold">Thuya</span>
-            <span className="text-xs text-neutral-300">View profile</span>
+            <span className="text-sm font-semibold">{t("title")}</span>
+            <span className="text-xs text-neutral-300">{t("viewProfile")}</span>
           </div>
         </div>
 

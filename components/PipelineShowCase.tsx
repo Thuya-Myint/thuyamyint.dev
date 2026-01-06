@@ -79,7 +79,7 @@ export default function PipelineShowCase() {
   }, [displayed]);
 
   return (
-    <div className=" lg:w-md w-[98%]  mx-auto mt-10 relative cursor-pointer">
+    <div className="   mx-auto mt-10 relative cursor-pointer">
       <div className="w-full h-full flex items-center  opacity-10 animate-pulse justify-center absolute">
         <VscTerminalBash className="text-white  " size={100} />
       </div>

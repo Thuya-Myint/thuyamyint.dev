@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useApp } from "@/context/AppProvider";
 import { SiFacebook, SiGithub, SiLinkedin, SiLine } from "react-icons/si";
 import { MdOutgoingMail, MdPhone } from "react-icons/md";
-import Link from "next/link";
+
 
 export default function HeroSectionAboutMe() {
   const [displayedText, setDisplayedText] = useState("");

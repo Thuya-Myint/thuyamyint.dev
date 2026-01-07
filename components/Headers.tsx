@@ -34,6 +34,7 @@ export default function Header() {
         fixed top-0 z-50 w-full
         backdrop-blur-md shadow-lg
         transition-all duration-300
+        border-b border-neutral-600/40
         ${hamburgerOpen ? "bg-black/60" : "bg-black/10"}
       `}
     >

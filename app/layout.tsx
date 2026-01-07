@@ -5,6 +5,7 @@ import Header from "@/components/Headers";
 import { AppProvider } from "@/context/AppProvider";
 import "./globals.css";
 
+
 /* ================= FONT ================= */
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -42,17 +43,23 @@ export const metadata: Metadata = {
   },
 };
 
+
+
 /* ================= ROOT LAYOUT ================= */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="en" className={quicksand.variable}>
       <body className="bg-black text-white antialiased">
         <AppProvider>
           <div className="relative min-h-screen overflow-x-hidden">
+            <div>
+
+            </div>
             {/* ================= BACKGROUND ================= */}
             <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
               {/* Base gradient */}

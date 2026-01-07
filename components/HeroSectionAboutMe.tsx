@@ -1,35 +1,117 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { useApp } from "@/context/AppProvider";
 import { SiFacebook, SiGithub, SiLinkedin, SiLine } from "react-icons/si";
 import { MdOutgoingMail, MdPhone } from "react-icons/md";
 import Image from "next/image";
 
+type ContactItem = {
+  id: string;
+  href: string;
+  className: string;
+  icon: React.ReactNode;
+  external?: boolean;
+};
+
 export default function HeroSectionAboutMe() {
+  const { t } = useApp();
+
+  /* ---------------- Typing Effect ---------------- */
+  const text = t("role");
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
-  const { t } = useApp();
-  const text = t("role");
+
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDisplayedText("");
     setIndex(0);
   }, [text]);
-  useEffect(() => {
-    if (index < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + text[index]);
-        setIndex((prev) => prev + 1);
-      }, 100); // typing speed (ms)
 
-      return () => clearTimeout(timeout);
-    }
+  useEffect(() => {
+    if (index >= text.length) return;
+
+    const timeout = setTimeout(() => {
+      setDisplayedText((prev) => prev + text[index]);
+      setIndex((prev) => prev + 1);
+    }, 100);
+
+    return () => clearTimeout(timeout);
   }, [index, text]);
 
+  /* ---------------- Clicked Contact ---------------- */
+  const [clickedContact, setClickedContact] = useState<string>("");
+
+  const handleClick = useCallback((id: string) => {
+    setClickedContact(id);
+  }, []);
+
+  /* ---------------- Contact Config ---------------- */
+  const contacts: ContactItem[] = useMemo(
+    () => [
+      {
+        id: "github",
+        href: "https://github.com/Thuya-Myint",
+        className:
+          "bg-linear-to-br from-black/10 to-black shadow-white/20 hover:from-neutral-500 hover:shadow-xl",
+        icon: <SiGithub className="text-white/30" />,
+      },
+      {
+        id: "linkedin",
+        href: "https://www.linkedin.com/in/thuya-myint-28ba4639a/",
+        className:
+          "bg-linear-to-br from-blue-200/40 to-black shadow-blue-400/40 hover:from-blue-400 hover:shadow-xl",
+        icon: <SiLinkedin className="text-blue-500" />,
+      },
+      {
+        id: "email",
+        href: "https://mail.google.com/mail/?view=cm&to=thuyamyint2022@gmail.com",
+        className:
+          "bg-linear-to-br from-green-200/40 to-black shadow-green-300/40 hover:from-green-400 hover:shadow-xl",
+        icon: <MdOutgoingMail className="text-green-400" />,
+      },
+      {
+        id: "phone",
+        href: "tel:+819070203415",
+        className:
+          "bg-linear-to-br from-red-200/40 to-black shadow-red-300/40 hover:from-red-300 hover:shadow-xl",
+        icon: <MdPhone className="text-red-400" />,
+        external: false,
+      },
+      {
+        id: "facebook",
+        href: "https://www.facebook.com/thuya.myint.88143/",
+        className:
+          "bg-linear-to-br from-blue-500/50 to-black shadow-blue-400/40 hover:from-blue-700 hover:shadow-xl",
+        icon: <SiFacebook className="text-blue-500" />,
+      },
+      {
+        id: "line",
+        href: "https://line.me/ti/p/shomyn0425",
+        className:
+          "bg-linear-to-br from-green-200/40 to-black shadow-green-300/40 hover:from-green-500 hover:shadow-xl",
+        icon: <SiLine className="text-green-500" />,
+      },
+      {
+        id: "nexa",
+        href: "https://nexacoreitsolution.com/thuyamyint",
+        className:
+          "bg-linear-to-br from-purple-300/40 to-black shadow-purple-300/40 hover:from-purple-500 hover:shadow-xl",
+        icon: (
+          <Image
+            src="https://res.cloudinary.com/dnqq3putc/image/upload/v1767749609/nexa_gsjaqw.png"
+            alt="Nexa Core IT Solution"
+            width={32}
+            height={32}
+          />
+        ),
+      },
+    ],
+    []
+  );
+
+  /* ---------------- UI ---------------- */
   return (
     <div className="flex text-2xl flex-col lg:max-w-2xl w-full items-start font-quicksand gap-4">
-
       <h1 className="text-4xl font-extrabold tracking-tight text-white">
         {t("greeting")}
         <span className="text-green-400">{" " + t("title")}</span>
@@ -42,7 +124,7 @@ export default function HeroSectionAboutMe() {
       <div className="w-fit flex items-center">
         <h2 className="font-mono text-lg text-green-300 bg-black/40 px-3 py-1 rounded border border-green-400/30">
           {displayedText}
-          <span className="animate-pulse px-1 py-1 h-full bg-neutral-500/50"></span>
+          <span className="animate-pulse px-1 py-1 h-full bg-neutral-500/50" />
         </h2>
       </div>
 
@@ -52,69 +134,29 @@ export default function HeroSectionAboutMe() {
 
       <p className="text-xs text-white/50">{t("stack")}</p>
 
-      <div className="grid grid-cols-7 gap-2 flex-wrap ">
-        <a
-          href={"https://github.com/Thuya-Myint"}
-          rel="noopener noreferrer"
-          target="_blank"
-          className="transition bg-linear-to-br from-black/10 rounded-lg hover:from-neutral-500 hover:shadow-xl shadow-white/20 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
-          <SiGithub className="text-white/30" />
-        </a>
+      <div className="grid grid-cols-7 gap-2">
+        {contacts.map(({ id, href, className, icon, external }) => {
+          const isActive = clickedContact === id;
 
-        <a
-          href={"https://www.linkedin.com/in/thuya-myint-28ba4639a/"}
-          rel="noopener noreferrer"
-          target="_blank"
-          className="transition bg-linear-to-br from-blue-200/40 rounded-lg hover:from-blue-400 hover:shadow-xl shadow-blue-400/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
-          <SiLinkedin className="text-blue-500" />
-        </a>
-        <a
-          href="https://mail.google.com/mail/?view=cm&to=thuyamyint2022@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition bg-linear-to-br from-green-200/40 rounded-lg hover:from-green-400 hover:shadow-xl shadow-green-300/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
-          <MdOutgoingMail />
-        </a>
-        <a
-          href="tel:+819070203415"
-          aria-label="Call phone"
-          title="Call"
-          className="transition bg-linear-to-br from-red-200/40 to-black rounded-lg hover:from-red-300 hover:shadow-xl shadow-red-300/40 border border-neutral-500  flex items-center justify-center p-1"
-        >
-          <MdPhone />
-        </a>
-        <a
-          href={"https://www.facebook.com/thuya.myint.88143/"}
-          rel="noopener noreferrer"
-          target="_blank"
-          className="transition bg-linear-to-br from-blue-500/50 rounded-lg hover:from-blue-700 hover:shadow-xl shadow-blue-400/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
-          <SiFacebook className="text-blue-500" />
-        </a>
-        <a
-          href="https://line.me/ti/p/shomyn0425"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Chat on LINE"
-          className="transition bg-linear-to-br from-green-200/40 rounded-lg hover:from-green-500 hover:shadow-xl shadow-green-300/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1"
-        >
-          <SiLine className="text-green-500" />
-        </a>
-
-        <a
-          href="https://nexacoreitsolution.com/thuyamyint"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Chat on LINE"
-          className="transition bg-linear-to-br from-purple-300/40 rounded-lg hover:from-purple-500 hover:shadow-xl shadow-purple-300/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1"
-        >
-          <Image
-            src={"https://res.cloudinary.com/dnqq3putc/image/upload/v1767749609/nexa_gsjaqw.png"}
-            alt={"Nexa Core IT Solution"}
-            width={32}
-            height={32}
-          />
-        </a>
+          return (
+            <a
+              key={id}
+              href={href}
+              target={external === false ? undefined : "_blank"}
+              rel={external === false ? undefined : "noopener noreferrer"}
+              onClick={() => handleClick(id)}
+              className={`
+                transition rounded-lg border border-neutral-500
+                flex items-center justify-center p-1
+                ${className}
+                ${isActive ? "shadow-xl ring-1 ring-white/30" : ""}
+              `}
+            >
+              {icon}
+            </a>
+          );
+        })}
       </div>
-    </div >
+    </div>
   );
 }

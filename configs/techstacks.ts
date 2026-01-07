@@ -42,6 +42,7 @@ export const techStacks = [
       { text: "REST APIs", color: "#9ca3af" },
       { text: "Authentication", color: "#60a5fa" },
       { text: "State-based workflows", color: "#fbbf24" },
+      { text: "Socket.io", color: "#e0e" }
     ],
   },
 

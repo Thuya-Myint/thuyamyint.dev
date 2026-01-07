@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useApp } from "@/context/AppProvider";
 import { SiFacebook, SiGithub, SiLinkedin, SiLine } from "react-icons/si";
 import { MdOutgoingMail, MdPhone } from "react-icons/md";
-
+import Image from "next/image";
 
 export default function HeroSectionAboutMe() {
   const [displayedText, setDisplayedText] = useState("");
@@ -51,12 +51,13 @@ export default function HeroSectionAboutMe() {
       </p>
 
       <p className="text-xs text-white/50">{t("stack")}</p>
-      <div className="flex gap-2 flex-wrap ">
+
+      <div className="grid grid-cols-7 gap-2 flex-wrap ">
         <a
           href={"https://github.com/Thuya-Myint"}
           rel="noopener noreferrer"
           target="_blank"
-          className="transition bg-linear-to-br from-black/10 rounded-lg hover:from-neutral-500 hover:shadow-xl shadow-white/20 hover:border-neutral-300 to-black border border-neutral-500 p-2">
+          className="transition bg-linear-to-br from-black/10 rounded-lg hover:from-neutral-500 hover:shadow-xl shadow-white/20 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
           <SiGithub className="text-white/30" />
         </a>
 
@@ -64,21 +65,21 @@ export default function HeroSectionAboutMe() {
           href={"https://www.linkedin.com/in/thuya-myint-28ba4639a/"}
           rel="noopener noreferrer"
           target="_blank"
-          className="transition bg-linear-to-br from-blue-200/40 rounded-lg hover:from-blue-400 hover:shadow-xl shadow-blue-400/40 hover:border-neutral-300 to-black border border-neutral-500 p-2">
+          className="transition bg-linear-to-br from-blue-200/40 rounded-lg hover:from-blue-400 hover:shadow-xl shadow-blue-400/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
           <SiLinkedin className="text-blue-500" />
         </a>
         <a
           href="https://mail.google.com/mail/?view=cm&to=thuyamyint2022@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="transition bg-linear-to-br from-green-200/40 rounded-lg hover:from-green-400 hover:shadow-xl shadow-green-300/40 hover:border-neutral-300 to-black border border-neutral-500 p-2">
+          className="transition bg-linear-to-br from-green-200/40 rounded-lg hover:from-green-400 hover:shadow-xl shadow-green-300/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
           <MdOutgoingMail />
         </a>
         <a
           href="tel:+819070203415"
           aria-label="Call phone"
           title="Call"
-          className="transition bg-linear-to-br from-red-200/40 to-black rounded-lg hover:from-red-300 hover:shadow-xl shadow-red-300/40 border border-neutral-500 p-2"
+          className="transition bg-linear-to-br from-red-200/40 to-black rounded-lg hover:from-red-300 hover:shadow-xl shadow-red-300/40 border border-neutral-500  flex items-center justify-center p-1"
         >
           <MdPhone />
         </a>
@@ -86,7 +87,7 @@ export default function HeroSectionAboutMe() {
           href={"https://www.facebook.com/thuya.myint.88143/"}
           rel="noopener noreferrer"
           target="_blank"
-          className="transition bg-linear-to-br from-blue-500/50 rounded-lg hover:from-blue-700 hover:shadow-xl shadow-blue-400/40 hover:border-neutral-300 to-black border border-neutral-500 p-2">
+          className="transition bg-linear-to-br from-blue-500/50 rounded-lg hover:from-blue-700 hover:shadow-xl shadow-blue-400/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1">
           <SiFacebook className="text-blue-500" />
         </a>
         <a
@@ -94,9 +95,24 @@ export default function HeroSectionAboutMe() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on LINE"
-          className="transition bg-linear-to-br from-green-200/40 rounded-lg hover:from-green-500 hover:shadow-xl shadow-green-300/40 hover:border-neutral-300 to-black border border-neutral-500 p-2"
+          className="transition bg-linear-to-br from-green-200/40 rounded-lg hover:from-green-500 hover:shadow-xl shadow-green-300/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1"
         >
           <SiLine className="text-green-500" />
+        </a>
+
+        <a
+          href="https://nexacoreitsolution.com/thuyamyint"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on LINE"
+          className="transition bg-linear-to-br from-purple-300/40 rounded-lg hover:from-purple-500 hover:shadow-xl shadow-purple-300/40 hover:border-neutral-300 to-black border border-neutral-500  flex items-center justify-center p-1"
+        >
+          <Image
+            src={"https://res.cloudinary.com/dnqq3putc/image/upload/v1767749609/nexa_gsjaqw.png"}
+            alt={"Nexa Core IT Solution"}
+            width={32}
+            height={32}
+          />
         </a>
       </div>
     </div >

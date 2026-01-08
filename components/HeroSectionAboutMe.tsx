@@ -152,17 +152,14 @@ export default function HeroSectionAboutMe() {
             <a
               key={id}
               href={href}
-              // Force _blank for external to keep your app alive in the previous tab
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
-              onClick={() => handleClick(id)}
-              className={`
-                transition rounded-lg border border-neutral-500
-                flex items-center justify-center p-1
-                ${className}
-                ${isActive ? "shadow-xl ring-1 ring-white/30" : ""}
-              `}
-            >
+              onClick={() => {
+                if (!isExternal) {
+                  handleClick(id);
+                }
+              }}
+              className={`transition rounded-lg border border-neutral-500 flex items-center justify-center p-1 ${className} ${isActive ? "shadow-xl ring-1 ring-white/30" : ""}`}>
               {icon}
             </a>
           );

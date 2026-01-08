@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef, startTransition } from "react";
 import { useApp } from "@/context/AppProvider";
 import { SiFacebook, SiGithub, SiLinkedin, SiLine } from "react-icons/si";
 import { MdOutgoingMail, MdPhone } from "react-icons/md";
@@ -22,17 +22,28 @@ export default function HeroSectionAboutMe() {
   const text = t("role") || "";
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
+  const prevTextRef = useRef(text);
 
   useEffect(() => {
     // Reset when text changes
-    setDisplayedText("");
-    setIndex(0);
+    if (prevTextRef.current !== text) {
+      prevTextRef.current = text;
+      startTransition(() => {
+        setDisplayedText("");
+        setIndex(0);
+      });
+    }
   }, [text]);
 
   useEffect(() => {
     const handlePageShow = (e: PageTransitionEvent) => {
       if (e.persisted) {
-        window.location.reload();
+        // Reset typing animation when page is restored from bfcache
+        // instead of reloading to prevent black screen issues
+        startTransition(() => {
+          setDisplayedText("");
+          setIndex(0);
+        });
       }
     };
 

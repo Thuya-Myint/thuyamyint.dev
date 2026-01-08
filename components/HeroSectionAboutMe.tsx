@@ -17,21 +17,27 @@ type ContactItem = {
 export default function HeroSectionAboutMe() {
   const { t } = useApp();
 
-  /* ---------------- Typing Effect ---------------- */
-  const text = t("role");
+  /* ---------------- Safe Typing Effect ---------------- */
+  // 1. Ensure text is a string, default to empty string if t() returns null/undefined
+  const text = t("role") || "";
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    // Reset when text changes
     setDisplayedText("");
     setIndex(0);
   }, [text]);
 
   useEffect(() => {
-    if (index >= text.length) return;
+    // 2. CRITICAL FIX: Guard clause. 
+    // If text is missing or index is out of bounds, stop.
+    if (!text || index >= text.length) return;
 
     const timeout = setTimeout(() => {
-      setDisplayedText((prev) => prev + text[index]);
+      // 3. CRITICAL FIX: Safe access using charAt prevents undefined errors
+      const nextChar = text.charAt(index);
+      setDisplayedText((prev) => prev + nextChar);
       setIndex((prev) => prev + 1);
     }, 100);
 
@@ -75,7 +81,7 @@ export default function HeroSectionAboutMe() {
         className:
           "bg-linear-to-br from-red-200/40 to-black shadow-red-300/40 hover:from-red-300 hover:shadow-xl",
         icon: <MdPhone className="text-red-400" />,
-        external: false,
+        external: false, // Phone links usually stay in same context or trigger app
       },
       {
         id: "facebook",
@@ -122,9 +128,10 @@ export default function HeroSectionAboutMe() {
       </p>
 
       <div className="w-fit flex items-center">
-        <h2 className="font-mono text-lg text-green-300 bg-black/40 px-3 py-1 rounded border border-green-400/30">
+        {/* Added min-h to prevent layout shift during typing */}
+        <h2 className="font-mono text-lg text-green-300 bg-black/40 px-3 py-1 rounded border border-green-400/30 min-h-[38px] flex items-center">
           {displayedText}
-          <span className="animate-pulse px-1 py-1 h-full bg-neutral-500/50" />
+          <span className="animate-pulse px-1 py-1 h-5 w-2 ml-1 bg-neutral-500/50 inline-block" />
         </h2>
       </div>
 
@@ -138,12 +145,16 @@ export default function HeroSectionAboutMe() {
         {contacts.map(({ id, href, className, icon, external }) => {
           const isActive = clickedContact === id;
 
+          // Determine target behavior
+          const isExternal = external !== false; // Default to true if undefined
+
           return (
             <a
               key={id}
               href={href}
-              target={external === false ? undefined : "_blank"}
-              rel={external === false ? undefined : "noopener noreferrer"}
+              // Force _blank for external to keep your app alive in the previous tab
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
               onClick={() => handleClick(id)}
               className={`
                 transition rounded-lg border border-neutral-500

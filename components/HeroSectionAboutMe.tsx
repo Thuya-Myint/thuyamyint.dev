@@ -23,46 +23,112 @@ export default function HeroSectionAboutMe() {
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
   const prevTextRef = useRef(text);
+  const isSafariRef = useRef(false);
+  const isNavigatingBackRef = useRef(false);
 
+  // Detect Safari for specific optimizations
   useEffect(() => {
-    // Reset when text changes
-    if (prevTextRef.current !== text) {
-      prevTextRef.current = text;
+    if (typeof window !== "undefined") {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      isSafariRef.current =
+        userAgent.includes("safari") &&
+        !userAgent.includes("chrome") &&
+        !userAgent.includes("chromium");
+    }
+  }, []);
+
+  // Safari-optimized reset function
+  const resetAnimation = useCallback(() => {
+    if (isSafariRef.current) {
+      // Safari: Use requestAnimationFrame for smoother rendering
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setDisplayedText("");
+          setIndex(0);
+        });
+      });
+    } else {
+      // Other browsers: Use startTransition
       startTransition(() => {
         setDisplayedText("");
         setIndex(0);
       });
     }
-  }, [text]);
+  }, []);
 
   useEffect(() => {
-    const handlePageShow = (e: PageTransitionEvent) => {
-      if (e.persisted) {
-        // Reset typing animation when page is restored from bfcache
-        // instead of reloading to prevent black screen issues
-        startTransition(() => {
-          setDisplayedText("");
-          setIndex(0);
-        });
+    // Reset when text changes
+    if (prevTextRef.current !== text) {
+      prevTextRef.current = text;
+      resetAnimation();
+    }
+  }, [text, resetAnimation]);
+
+  useEffect(() => {
+    // Safari-specific: Handle visibility change (Safari uses this for bfcache)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible" && isNavigatingBackRef.current) {
+        // Small delay for Safari to ensure DOM is ready before resetting
+        setTimeout(() => {
+          resetAnimation();
+          isNavigatingBackRef.current = false;
+        }, 50);
       }
     };
 
+    // Handle pageshow event (bfcache restoration)
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        isNavigatingBackRef.current = true;
+        if (isSafariRef.current) {
+          // Safari: Use visibility change + small delay to prevent black screen
+          // The delay ensures Safari has time to restore the DOM properly
+          setTimeout(() => {
+            resetAnimation();
+          }, 100);
+        } else {
+          resetAnimation();
+        }
+      }
+    };
+
+    // Safari: Listen to visibility change for better bfcache handling
+    if (isSafariRef.current) {
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+    }
+
     window.addEventListener("pageshow", handlePageShow);
-    return () => window.removeEventListener("pageshow", handlePageShow);
-  }, []);
+
+    return () => {
+      if (isSafariRef.current) {
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+      }
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, [resetAnimation]);
 
   useEffect(() => {
     // 2. CRITICAL FIX: Guard clause. 
     // If text is missing or index is out of bounds, stop.
     if (!text || index >= text.length) return;
 
-    const timeout = setTimeout(() => {
+    const updateText = () => {
       // 3. CRITICAL FIX: Safe access using charAt prevents undefined errors
       const nextChar = text.charAt(index);
-      setDisplayedText((prev) => prev + nextChar);
-      setIndex((prev) => prev + 1);
-    }, 100);
+      if (isSafariRef.current) {
+        // Safari: Use requestAnimationFrame for smoother updates
+        requestAnimationFrame(() => {
+          setDisplayedText((prev) => prev + nextChar);
+          setIndex((prev) => prev + 1);
+        });
+      } else {
+        // Other browsers: Direct update
+        setDisplayedText((prev) => prev + nextChar);
+        setIndex((prev) => prev + 1);
+      }
+    };
 
+    const timeout = setTimeout(updateText, 100);
     return () => clearTimeout(timeout);
   }, [index, text]);
 

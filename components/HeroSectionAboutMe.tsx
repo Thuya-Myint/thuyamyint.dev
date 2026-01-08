@@ -30,6 +30,17 @@ export default function HeroSectionAboutMe() {
   }, [text]);
 
   useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
+
+  useEffect(() => {
     // 2. CRITICAL FIX: Guard clause. 
     // If text is missing or index is out of bounds, stop.
     if (!text || index >= text.length) return;

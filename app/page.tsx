@@ -1,3 +1,4 @@
+export const revalidate = 86400
 import HeroSection from '@/components/HeroSection'
 import TechStacks from '@/components/TechStacks'
 import WorkExperiences from '@/components/WorkExperiences'

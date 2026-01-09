@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
-
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from "@/components/Headers";
 import { AppProvider } from "@/context/AppProvider";
 import "./globals.css";
@@ -129,6 +129,7 @@ export default function RootLayout({
 
             {/* ================= CONTENT ================= */}
             <Header />
+            <SpeedInsights />
             <main className="relative z-10">{children}</main>
           </div>
         </AppProvider>

@@ -21,5 +21,10 @@
   "stackInfra": "I manage cloud infrastructure with containerization and CI/CD pipelines, ensuring consistent, repeatable deployments across environments.",
   "stackMicroservices": "I design microservice architectures with independent services, Docker-based deployment, API gateways, and asynchronous messaging to ensure scalability and fault isolation.",
   "systemArchitectureDescription": "The system follows a layered, service-oriented architecture with a Next.js frontend, API gateway, independent backend services, dedicated data stores, and automated cloud deployments via CI/CD.",
-  "workExperiences": "Work Experiences"
+  "workExperiences": "Work Experiences",
+  "workExperiencesDescription": "Companies I've worked with and contributed to.",
+  "nexaCoreDescription": "Developing full-stack applications using modern technologies. Building scalable web applications and contributing to infrastructure improvements.",
+  "aboutNexaCore": "Nexa Core was an IT solutions company delivering web and mobile apps using the MERN stack and React Native for scalable, high-performance, cross-platform solutions",
+  "viewWebSite": "View website",
+  "aboveOneYear": "1+ years"
 }

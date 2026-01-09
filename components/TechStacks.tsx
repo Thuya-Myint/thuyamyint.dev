@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { techStacks } from "@/configs/techstacks";
 import { useApp } from "@/context/AppProvider";
-
+import { GrAd } from "react-icons/gr"
 export default function TechStacks() {
   const { t } = useApp();
   const refs = useRef<(HTMLDivElement | null)[]>([]);
@@ -51,7 +51,9 @@ export default function TechStacks() {
     <section className="mx-auto max-w-6xl px-6 py-24">
       {/* Header */}
       <div className="mb-20 max-w-3xl">
-        <h2 className="mb-6 text-3xl font-semibold tracking-tight">
+
+        <h2 className="mb-6 text-3xl font-semibold  flex gap-2 items-center tracking-tight">
+          <GrAd className="text-green-400" />
           {t("systemArchitectureTitle")}
         </h2>
         <p className="text-sm leading-relaxed opacity-80">

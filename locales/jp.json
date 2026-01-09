@@ -21,5 +21,10 @@
   "stackInfra": "コンテナ化と CI/CD パイプラインを用いて、クラウド環境における安定したインフラ運用を行っています。",
   "stackMicroservices": "Docker を用いたマイクロサービス構成を設計・運用し、API ゲートウェイや非同期処理により拡張性と耐障害性を確保しています。",
   "systemArchitectureDescription": "Next.js フロントエンド、API ゲートウェイ、独立したバックエンドサービス、専用データストアを組み合わせたサービス指向アーキテクチャを採用しています。",
-  "workExperiences": "仕事の経験"
+  "workExperiences": "仕事の経験",
+  "workExperiencesDescription": "これまでに勤務し、貢献してきた企業です。",
+  "nexaCoreDescription": "モダンな技術を使用してフルスタックアプリケーションを開発。スケーラブルなWebアプリケーションの構築とインフラ改善に貢献しています。",
+  "aboutNexaCore": "Nexa Coreは、MERNスタックとReact Nativeを活用し、スケーラブルで高性能なWebおよびモバイルアプリを提供するITソリューション企業でした",
+  "viewWebSite": "サイトを表示",
+  "aboveOneYear": "１年以上"
 }

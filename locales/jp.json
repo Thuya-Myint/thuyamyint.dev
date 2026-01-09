@@ -26,5 +26,14 @@
   "nexaCoreDescription": "モダンな技術を使用してフルスタックアプリケーションを開発。スケーラブルなWebアプリケーションの構築とインフラ改善に貢献しています。",
   "aboutNexaCore": "Nexa Coreは、MERNスタックとReact Nativeを活用し、スケーラブルで高性能なWebおよびモバイルアプリを提供するITソリューション企業でした",
   "viewWebSite": "サイトを表示",
-  "aboveOneYear": "１年以上"
+  "aboveOneYear": "１年以上",
+  "curioLmsTitle": "Curio LMS",
+  "curioLmsDescription": "Curio LMS は、マルチロール・マルチスクール・マルチコースに対応した学習管理システムです。",
+  "curioLmsDetail": "学生・講師・学校管理者それぞれに適切な権限を提供します。学生はコース登録後のみ教材にアクセスでき、受講期間終了後は自動的にアクセスが無効になります。登録や承認、ステータス変更時にはメール通知が送信されます。",
+  "shomynTitle": "Shomyn Horizon",
+  "shomynDescription": "Shomyn Horizon は、リアルタイム注文管理ダッシュボードを備えたマルチショップ対応ECプラットフォームです。",
+  "shomynDetail": "ミドルウェアによるロールベース制御と JWT 認証を用いてデータの整合性を確保しています。Redis によるキャッシュ最適化と Socket.IO によるリアルタイム注文更新を実装しています。",
+  "shiftlyJpTitle": "Shiftly JP",
+  "shiftlyJpDescription": "Shiftly JP は、日本でのアルバイト管理のために開発したシフト管理アプリです。",
+  "shiftlyJpDetail": "日本語学校に通いながらアルバイトをしていた経験をもとに開発しました。OAuth 認証、複数テーマ切り替え、英語・日本語対応を備え、外国人留学生でも使いやすい設計になっています。"
 }

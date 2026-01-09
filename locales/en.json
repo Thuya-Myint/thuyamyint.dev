@@ -26,5 +26,14 @@
   "nexaCoreDescription": "Developing full-stack applications using modern technologies. Building scalable web applications and contributing to infrastructure improvements.",
   "aboutNexaCore": "Nexa Core was an IT solutions company delivering web and mobile apps using the MERN stack and React Native for scalable, high-performance, cross-platform solutions",
   "viewWebSite": "View website",
-  "aboveOneYear": "1+ years"
+  "aboveOneYear": "1+ years",
+  "curioLmsTitle": "Curio LMS",
+  "curioLmsDescription": "Curio LMS is a multi-role, multi-school, and multi-course learning management system designed for scalable education platforms.",
+  "curioLmsDetail": "It supports students, teachers, and school administrators with strict access control. Students can access teaching materials only after enrollment, and access is automatically revoked when the course duration ends. Teachers can manage courses across multiple platforms, while email notifications are sent for enrollments, approvals, and status changes.",
+  "shomynTitle": "Shomyn Horizon",
+  "shomynDescription": "Shomyn Horizon is a multi-shop e-commerce platform with a real-time order management dashboard.",
+  "shomynDetail": "It supports multiple roles using middleware-based role control and JWT authentication to ensure data integrity. Redis is used for caching and performance optimization, while Socket.IO enables real-time order updates across shops.",
+  "shiftlyJpTitle": "Shiftly JP",
+  "shiftlyJpDescription": "Shiftly JP is a shift-tracking application built to manage part-time work in Japan.",
+  "shiftlyJpDetail": "It was developed to track working hours while studying at a language school in Japan. The system supports OAuth authentication, multiple themes, and bilingual support (English and Japanese), focusing on usability for foreign part-time workers."
 }

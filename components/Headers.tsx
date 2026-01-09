@@ -10,6 +10,8 @@ import { SiTerraform } from "react-icons/si";
 import { VscTerminalBash } from "react-icons/vsc";
 import tm from "@/assets/images/tm.webp";
 
+import { useRouter, usePathname } from "next/navigation";
+
 export default function Header() {
   const { t, locale, toggleLocale } = useApp();
 
@@ -17,6 +19,31 @@ export default function Header() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleNavClick = (href: string, scroll?: boolean) => {
+    if (!scroll) {
+      router.push(href);
+      return;
+    }
+
+    const scrollToProjects = () => {
+      document
+        .getElementById(href)
+        ?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    if (pathname !== "/") {
+      router.push("/");
+      setTimeout(scrollToProjects, 100);
+    } else {
+      scrollToProjects();
+    }
+
+    setHamburgerOpen(false);
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -49,10 +76,10 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex gap-4 items-center">
-          {NAV_ITEMS.map(({ label, href, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
+          {NAV_ITEMS.map(({ label, href, icon: Icon, scroll }) => (
+            <button
+              key={label}
+              onClick={() => handleNavClick(href, scroll)}
               className="
                 group flex items-center gap-1
                 px-3 py-2 text-sm font-quicksand text-white
@@ -67,7 +94,7 @@ export default function Header() {
                 className="group-hover:scale-110 transition-transform"
               />
               <span>{t(label)}</span>
-            </Link>
+            </button>
           ))}
         </nav>
 
@@ -184,11 +211,10 @@ export default function Header() {
 
         {/* Mobile Nav */}
         <nav className="flex flex-col items-start w-full gap-4 py-4 text-white">
-          {[...NAV_ITEMS, ...P_NAV].map(({ label, href, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setHamburgerOpen(false)}
+          {[...NAV_ITEMS, ...P_NAV].map(({ label, href, icon: Icon, scroll }) => (
+            <button
+              key={label}
+              onClick={() => handleNavClick(href, scroll)}
               className="
                 flex items-center w-full gap-2
                 text-sm font-medium py-2
@@ -198,7 +224,7 @@ export default function Header() {
             >
               <Icon size={18} />
               {t(label)}
-            </Link>
+            </button>
           ))}
         </nav>
 

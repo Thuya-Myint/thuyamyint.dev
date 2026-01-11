@@ -99,7 +99,7 @@ export default function Footer() {
         </div>
 
         {/* ===== Identity + Actions ===== */}
-        <div className="mt-24 flex flex-col md:flex-row items-center justify-between gap-10 p-2">
+        <div className="mt-24 flex flex-col md:flex-row items-center justify-between gap-10 ">
           <div className="space-y-3 text-center md:text-left">
             <h2 className="text-3xl font-bold tracking-tight">
               {t("title")}
@@ -110,7 +110,7 @@ export default function Footer() {
             <p className="text-green-400">{`echo "Let’s build something that actually scales."`}</p>
           </div>
 
-          <div className="flex items-center gap-4 ">
+          <div className="flex items-center gap-4  ">
             {[
               {
                 href: "https://github.com/Thuya-Myint",
@@ -133,7 +133,7 @@ export default function Footer() {
                 href={item.href}
                 target="_blank"
                 aria-label={item.label}
-                className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 font-mono text-sm transition
+                className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-2 py-2  text-sm transition
                            hover:-translate-y-1 hover:bg-white/10 hover:shadow-lg"
               >
                 {item.icon}

@@ -24,12 +24,14 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleNavClick = (href: string, scroll?: boolean) => {
+    console.log("href", href)
     if (!scroll) {
       router.push(href);
       return;
     }
 
-    const scrollToProjects = () => {
+
+    const scrollToDiv = () => {
       document
         .getElementById(href)
         ?.scrollIntoView({ behavior: "smooth" });
@@ -37,9 +39,9 @@ export default function Header() {
 
     if (pathname !== "/") {
       router.push("/");
-      setTimeout(scrollToProjects, 100);
+      setTimeout(scrollToDiv, 100);
     } else {
-      scrollToProjects();
+      scrollToDiv();
     }
 
     setHamburgerOpen(false);

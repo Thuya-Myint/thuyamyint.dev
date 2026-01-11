@@ -6,17 +6,17 @@ export const projects = [
     image: [
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536312/lms1_fmflhy.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536293/lms2_azk5io.png",
-      "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536290/lms3_mkpw4m.png"
+      "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536290/lms3_mkpw4m.png",
     ],
     stacks: [
       "React",
-      "Node",
+      "Node.js",
       "Express",
       "Firebase",
-      "Mongo",
-      "CohereAI",
-      "Mailing Service",
-    ]
+      "MongoDB",
+      "Cohere AI",
+      "Email Service",
+    ],
   },
   {
     title: "shomynTitle",
@@ -25,20 +25,19 @@ export const projects = [
     image: [
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536282/shop1_pljvb8.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536267/shop2_zvyr4k.png",
-      "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536267/shop2_zvyr4k.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536267/shop5_fuxuxt.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536266/shop4_ebl9ek.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536265/shop3_bsnwap.png",
-      "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536265/shop6_mvtyd0.png"
+      "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536265/shop6_mvtyd0.png",
     ],
     stacks: [
       "React",
-      "Node",
+      "Node.js",
       "Express",
-      "Mongo",
+      "MongoDB",
       "Redis",
-      "Socket IO"
-    ]
+      "Socket.IO",
+    ],
   },
   {
     title: "shiftlyJpTitle",
@@ -53,14 +52,27 @@ export const projects = [
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767715442/shifty-jp-res1_zu3a7q.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767715422/shifty-jp-res2_oopotm.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767715429/shifty-jp-res3_rdrzvr.png",
-
     ],
     stacks: [
       "React",
-      "Typescript",
+      "TypeScript",
       "Express",
       "Supabase",
-      "OAuth"
-    ]
-  }
-]
+      "OAuth",
+    ],
+  },
+  {
+    title: "cloudPathTitle",
+    description: "cloudPathDescription",
+    detail: "cloudPathDetail",
+    image: [
+      "https://res.cloudinary.com/dnqq3putc/image/upload/v1768107365/cloudpath_j8rqj3.png"
+    ],
+    stacks: [
+      "React",
+      "Vercel",
+      "Weather Api",
+      "Map Api",
+    ],
+  },
+];

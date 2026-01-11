@@ -35,5 +35,8 @@
   "shomynDetail": "It supports multiple roles using middleware-based role control and JWT authentication to ensure data integrity. Redis is used for caching and performance optimization, while Socket.IO enables real-time order updates across shops.",
   "shiftlyJpTitle": "Shiftly JP",
   "shiftlyJpDescription": "Shiftly JP is a shift-tracking application built to manage part-time work in Japan.",
-  "shiftlyJpDetail": "It was developed to track working hours while studying at a language school in Japan. The system supports OAuth authentication, multiple themes, and bilingual support (English and Japanese), focusing on usability for foreign part-time workers."
+  "shiftlyJpDetail": "It was developed to track working hours while studying at a language school in Japan. The system supports OAuth authentication, multiple themes, and bilingual support (English and Japanese), focusing on usability for foreign part-time workers.",
+  "cloudPathTitle": "Cloud Path",
+  "cloudPathDescription": "A weather and map visualization application built with React.",
+  "cloudPathDetail": "A React-based application that combines a weather API and a map API. Location search resolves geographic coordinates, updates map navigation, and fetches real-time weather data for the selected area."
 }

@@ -5,10 +5,10 @@ import { GiJourney, GiSecretBook } from "react-icons/gi";
 import { MdOutlineContacts } from "react-icons/md";
 import { LuMousePointerClick } from "react-icons/lu";
 export const NAV_ITEMS = [
-  { label: "intro", href: "/", icon: FaWpbeginner, scroll: false },
+  { label: "intro", href: "intro", icon: FaWpbeginner, scroll: true },
   { label: "projects", href: "projects", icon: TbBrandCraft, scroll: true },
   { label: "journey", href: "/journey", icon: GiJourney, scroll: false },
-  { label: "experience", href: "/experience", icon: MdDataThresholding, scroll: false },
+  { label: "experiences", href: "experiences", icon: MdDataThresholding, scroll: true },
 ];
 
 export const P_NAV = [

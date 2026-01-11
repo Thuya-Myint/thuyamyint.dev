@@ -3,15 +3,27 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // i18n is removed from here for App Router
+
+  // Performance optimizations
+  experimental: {
+    optimizePackageImports: ['react-icons'],
+  },
+
+  // Image optimization
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "res.cloudinary.com",
       },
     ],
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 31536000, // 1 year
   },
+
+  // Compression
+  compress: true,
+
 };
 
 export default nextConfig;

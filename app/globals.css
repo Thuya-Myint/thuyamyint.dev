@@ -1,153 +1,101 @@
 @import "tailwindcss";
 
+/* ================= Base ================= */
+
 :root {
   --font-quicksand: 'Quicksand', sans-serif;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   font-family: var(--font-quicksand);
 }
 
-@theme {
-  /* Fonts */
-  --font-quicksand: var(--font-quicksand);
-  --font-uncial: var(--font-uncial);
+/* ================= Keyframes ================= */
 
-  /* Animations - Defining them here makes them Tailwind utilities automatically */
-  --animate-gradient-move: gradientMove 18s ease infinite;
-  --animate-float-slow: floatSlow 22s ease-in-out infinite;
-  --animate-float-slower: floatSlower 28s ease-in-out infinite;
-  --animate-pipeline-step: digitalPulse 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
-  --animate-typing: typing 4s steps(60) 1 normal forwards,
-    blink 0.75s step-end infinite;
-
-  /* Keyframes */
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  /* Slow light sweep */
-  @keyframes slow-pan {
-    0% {
-      transform: translateX(-20%) rotate(0deg);
-    }
-    100% {
-      transform: translateX(20%) rotate(180deg);
-    }
-  }
-  @keyframes diagonalLightMove {
-  0% {
-    transform: translateX(-20%) translateY(-20%);
-  }
-  100% {
-    transform: translateX(20%) translateY(20%);
-  }
+@keyframes typing {
+  from { width: 0; }
+  to { width: fit-content }
 }
 
-
-
-  
-  /* Floating blobs */
-  @keyframes floatSlow {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(40px);
-    }
-  }
-
-  @keyframes floatSlower {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-30px);
-    }
-  }
-  @keyframes blink {
-    from,
-    to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: #4ade80;
-    }
-  }
-  @keyframes circuitFlow {
-    to {
-      stroke-dashoffset: -1000px;
-    } /* Added px */
-  }
-  @keyframes digitalPulse {
-    0%,
-    100% {
-      opacity: 0.7;
-      transform: scale(1);
-      filter: brightness(1);
-    }
-    10%,
-    20% {
-      opacity: 1;
-      transform: scale(1.02);
-      filter: brightness(1.2);
-    }
-  }
-  @keyframes slow-pan {
-  0% {
-    transform: translateX(-20%) rotate(0deg);
-  }
-  100% {
-    transform: translateX(20%) rotate(180deg);
-  }
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: #4ade80; }
 }
 
+@keyframes slow-pan {
+  0% { transform: translateX(-20%) rotate(0deg); }
+  100% { transform: translateX(20%) rotate(180deg); }
+}
 
+@keyframes diagonalLightMove {
+  0% { transform: translate(-20%, -20%); }
+  100% { transform: translate(20%, 20%); }
+}
 
 @keyframes floatSlow {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(40px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(40px); }
 }
 
 @keyframes floatSlower {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
 }
-  
-  @keyframes gradientMove {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
+
+@keyframes circuitFlow {
+  to { stroke-dashoffset: -1000px; }
+}
+
+@keyframes digitalPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  10%, 20% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: brightness(1.2);
   }
 }
 
-/* Helper Utilities */
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes blob {
+  0% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px,-50px) scale(1.1); }
+  66% { transform: translate(-20px,20px) scale(0.9); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+/* ================= Utilities ================= */
+
 .typing {
   white-space: nowrap;
   overflow: hidden;
-  border-right: 2px solid #4ade80;
+}
+
+.animate-slow-pan {
+  animation: slow-pan 45s linear infinite;
+}
+
+.animate-diagonal-light {
+  animation: diagonalLightMove 40s linear infinite;
+}
+
+.animate-floatSlow {
+  animation: floatSlow 24s ease-in-out infinite;
+}
+
+.animate-floatSlower {
+  animation: floatSlower 30s ease-in-out infinite;
 }
 
 .animate-circuit-fast {
@@ -158,19 +106,6 @@ body {
 .animate-circuit-slow {
   stroke-dasharray: 40 400;
   animation: circuitFlow 3s linear infinite reverse;
-}
- .animate-floatSlow {
-  animation: floatSlow 24s ease-in-out infinite;
-}
-
-.animate-floatSlower {
-  animation: floatSlower 30s ease-in-out infinite;
-}
-  .animate-slow-pan {
-  animation: slow-pan 45s linear infinite;
-}
-.animate-diagonal-light {
-  animation: diagonalLightMove 40s linear infinite;
 }
 
 @layer utilities {
@@ -184,19 +119,3 @@ body {
     animation-delay: 4s;
   }
 }
-
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-

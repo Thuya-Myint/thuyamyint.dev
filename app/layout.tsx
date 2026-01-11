@@ -4,7 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from "@/components/Headers";
 import { AppProvider } from "@/context/AppProvider";
 import "./globals.css";
-
+import Footer from "@/components/Footer";
 
 /* ================= FONT ================= */
 const quicksand = Quicksand({
@@ -131,6 +131,7 @@ export default function RootLayout({
             <Header />
             <SpeedInsights />
             <main className="relative z-10">{children}</main>
+            <Footer />
           </div>
         </AppProvider>
       </body>

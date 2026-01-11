@@ -73,7 +73,7 @@ export default function Header() {
         {/* Left */}
         <div className="flex items-center gap-2 text-white">
           <h1 className="text-2xl font-bold">{t("title")}</h1>
-          <VscTerminalBash size={20} />
+          <VscTerminalBash className="text-4xl" />
         </div>
 
         {/* Desktop Nav */}

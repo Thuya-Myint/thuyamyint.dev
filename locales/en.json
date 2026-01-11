@@ -38,5 +38,11 @@
   "shiftlyJpDetail": "It was developed to track working hours while studying at a language school in Japan. The system supports OAuth authentication, multiple themes, and bilingual support (English and Japanese), focusing on usability for foreign part-time workers.",
   "cloudPathTitle": "Cloud Path",
   "cloudPathDescription": "A weather and map visualization application built with React.",
-  "cloudPathDetail": "A React-based application that combines a weather API and a map API. Location search resolves geographic coordinates, updates map navigation, and fetches real-time weather data for the selected area."
+  "cloudPathDetail": "A React-based application that combines a weather API and a map API. Location search resolves geographic coordinates, updates map navigation, and fetches real-time weather data for the selected area.",
+  "footerDescription": "Full-Stack Developer building performant interfaces, resilient backends, and infrastructure that scales without excuses.",
+  "connectViaDirect": "Connect Directly via thuyamyint.dev",
+  "email": "E-mail Address",
+  "enterMessage": "Enter Messsage",
+  "send": "Send",
+  "directResNoSpam": "Direct contact. No spam. Response within 24 hours."
 }

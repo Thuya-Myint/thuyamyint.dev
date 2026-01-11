@@ -25,7 +25,7 @@ export default function Footer() {
   }, [line])
 
   return (
-    <footer className="relative mt-40 overflow-hidden bg-black/10 border-t border-neutral-600/40">
+    <footer className="relative  overflow-hidden bg-black/10 border-t border-neutral-600/40">
       {/* ===== Ambient Background ===== */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-0 h-[600px] w-[600px] rounded-full bg-emerald-500/10 blur-[140px]" />

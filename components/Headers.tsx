@@ -72,7 +72,7 @@ export default function Header() {
       <div className="flex items-center justify-between px-6 py-4">
         {/* Left */}
         <div className="flex items-center gap-2 text-white">
-          <h1 className="text-2xl font-bold font-quicksand">{t("title")}</h1>
+          <h1 className="text-2xl font-bold">{t("title")}</h1>
           <VscTerminalBash size={20} />
         </div>
 
@@ -83,8 +83,8 @@ export default function Header() {
               key={label}
               onClick={() => handleNavClick(href, scroll)}
               className="
-                group flex items-center gap-1
-                px-3 py-2 text-sm font-quicksand text-white
+                group flex cursor-pointer items-center gap-1
+                px-3 py-2 text-sm text-white
                 transition-all duration-300
                 hover:text-black
                 hover:bg-linear-to-r hover:from-green-400 hover:to-blue-500
@@ -101,19 +101,19 @@ export default function Header() {
         </nav>
 
         {/* Desktop Right */}
-        <div className="hidden lg:grid grid-cols-2 place-content-center gap-3">
+        <div className="hidden cursor-pointer lg:grid grid-cols-2 place-content-center gap-3">
           {/* TM Dropdown */}
-          <div className="relative" ref={modalRef}>
+          <div className="relative cursor-pointer" ref={modalRef}>
             <button
               onClick={() => setIsModalOpen((prev) => !prev)}
               aria-label="Toggle profile menu"
               className="
-                w-10 h-10 rounded-full overflow-hidden
+                w-10 h-10 rounded-full  cursor-pointer overflow-hidden
                 shadow-md animate-spin-slow
                 hover:scale-110 transition
               "
             >
-              <Image src={tm} alt="TM" className="w-full h-full object-cover" />
+              <Image src={tm} alt="TM" className="cursor-pointer w-full h-full object-cover" />
             </button>
 
             {isModalOpen && (
@@ -129,7 +129,7 @@ export default function Header() {
                     key={href}
                     href={href}
                     className="
-                      flex items-center gap-2 px-4 py-2 text-white
+                      flex items-center cursor-pointer gap-2 px-4 py-2 text-white
                       hover:text-black
                       hover:bg-linear-to-r hover:from-green-100 rounded-lg hover:to-blue-100
                       transition

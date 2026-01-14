@@ -17,9 +17,6 @@ const quicksand = Quicksand({
 export const metadata: Metadata = {
   title: "Thuya Myint – Developer Portfolio",
   description: "Welcome to my portfolio and projects showcase.",
-  icons: {
-    icon: "/t.png",
-  },
   openGraph: {
     title: "Thuya Myint – Developer Portfolio",
     description: "Welcome to my portfolio and projects showcase.",

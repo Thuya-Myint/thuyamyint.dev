@@ -5,6 +5,7 @@ import Header from "@/components/Headers";
 import { AppProvider } from "@/context/AppProvider";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import ScrollHandler from "@/components/ScrollHandler";
 
 /* ================= FONT ================= */
 const quicksand = Quicksand({
@@ -54,9 +55,6 @@ export default function RootLayout({
       <body className="bg-black text-white antialiased">
         <AppProvider>
           <div className="relative min-h-screen overflow-x-hidden">
-            <div>
-
-            </div>
             {/* ================= BACKGROUND ================= */}
             <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
               {/* Base gradient */}
@@ -126,6 +124,7 @@ export default function RootLayout({
 
             {/* ================= CONTENT ================= */}
             <Header />
+            <ScrollHandler />
             <SpeedInsights />
             <main className="relative z-10">{children}</main>
             <Footer />

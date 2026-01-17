@@ -11,58 +11,58 @@ import {
 import { FaGolang } from "react-icons/fa6";
 import { FaNodeJs } from "react-icons/fa6";
 import { VscTerminalBash } from "react-icons/vsc";
+const LOGS = [
+  "$ initializing build sequence...",
+  "› compiling front-end assets...",
+  "› bundling server modules...",
+  "› optimizing images & chunks...",
+  "✔ build completed successfully",
+
+  "",
+  "$ git push origin main",
+  "› authenticating...",
+  "› syncing repository...",
+  "✔ code pushed to GitHub",
+
+  "",
+  "$ terraform plan",
+  "› analyzing infrastructure...",
+  "› generating execution plan...",
+  "✔ infrastructure plan ready",
+
+  "",
+  "$ terraform apply --auto-approve",
+  "› provisioning compute...",
+  "› networking configuration...",
+  "› storage and IAM applied...",
+  "✔ infrastructure deployed",
+
+  "",
+  "$ starting Redis...",
+  "› connecting to cache layer...",
+  "› enabling persistence...",
+  "✔ redis ready",
+
+  "",
+  "$ deploying application to cloud...",
+  "› spinning up containers...",
+  "› registering health checks...",
+  "› attaching load balancer...",
+  "✔ application deployed",
+
+  "",
+  "🟢 SERVER STATUS: LIVE & STABLE",
+];
+
 export default function PipelineShowCase() {
-  const logs = [
-    "$ initializing build sequence...",
-    "› compiling front-end assets...",
-    "› bundling server modules...",
-    "› optimizing images & chunks...",
-    "✔ build completed successfully",
-
-    "",
-    "$ git push origin main",
-    "› authenticating...",
-    "› syncing repository...",
-    "✔ code pushed to GitHub",
-
-    "",
-    "$ terraform plan",
-    "› analyzing infrastructure...",
-    "› generating execution plan...",
-    "✔ infrastructure plan ready",
-
-    "",
-    "$ terraform apply --auto-approve",
-    "› provisioning compute...",
-    "› networking configuration...",
-    "› storage and IAM applied...",
-    "✔ infrastructure deployed",
-
-    "",
-    "$ starting Redis...",
-    "› connecting to cache layer...",
-    "› enabling persistence...",
-    "✔ redis ready",
-
-    "",
-    "$ deploying application to cloud...",
-    "› spinning up containers...",
-    "› registering health checks...",
-    "› attaching load balancer...",
-    "✔ application deployed",
-
-    "",
-    "🟢 SERVER STATUS: LIVE & STABLE",
-  ];
-
   const [displayed, setDisplayed] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
-      if (i < logs.length) {
-        setDisplayed((prev) => [...prev, logs[i]]);
+      if (i < LOGS.length) {
+        setDisplayed((prev) => [...prev, LOGS[i]]);
         i++;
       } else {
         clearInterval(interval);

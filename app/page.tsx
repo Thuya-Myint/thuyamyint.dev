@@ -1,8 +1,15 @@
+import dynamic from 'next/dynamic'
 import HeroSection from '@/components/HeroSection'
 import TechStacks from '@/components/TechStacks'
-import WorkExperiences from '@/components/WorkExperiences.optimized'
-import ProjectShowcase from '@/components/Projects.optimized'
 import { projects } from '@/configs/projects'
+
+const ProjectShowcase = dynamic(() => import('@/components/Projects.optimized'), {
+  loading: () => <div className="h-96 animate-pulse bg-white/5 rounded-3xl" />
+})
+
+const WorkExperiences = dynamic(() => import('@/components/WorkExperiences.optimized'), {
+  loading: () => <div className="h-96 animate-pulse bg-white/5 rounded-3xl" />
+})
 
 export const revalidate = 86400
 

@@ -8,7 +8,7 @@ export const revalidate = 86400
 
 export default function Home() {
   return (
-    <div id="intro" className='lg:p-20 p-4'>
+    <div id="intro" className='lg:p-20 p-4 mt-20'>
       <HeroSection />
       <TechStacks />
       <WorkExperiences />

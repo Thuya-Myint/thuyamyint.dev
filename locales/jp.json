@@ -44,5 +44,7 @@
   "email": "メール アドレス",
   "enterMessage": "メッセージを入力",
   "send": "送信",
+  "sending": "送信しています。。。",
+  "emailSent": "送信完了！",
   "directResNoSpam": "直接のご連絡のみ。営業・スパム不可。24時間以内に返信します。"
 }

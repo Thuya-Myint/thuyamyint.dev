@@ -44,5 +44,7 @@
   "email": "E-mail Address",
   "enterMessage": "Enter Messsage",
   "send": "Send",
+  "sending": "Sending...",
+  "emailSent": "Sent!",
   "directResNoSpam": "Direct contact. No spam. Response within 24 hours."
 }

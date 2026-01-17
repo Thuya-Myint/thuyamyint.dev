@@ -120,7 +120,7 @@ function JourneyContent() {
             `}
           >
             {activeIndex === i + 1 && (
-              <span className="absolute -inset-1 rounded-full border border-orange-500/50 animate-ping opacity-80" />
+              <span className="absolute -inset-1 pointer-events-none rounded-full border border-orange-500/50 animate-ping opacity-80" />
             )}
             0{i + 1}
           </button>

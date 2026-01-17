@@ -86,8 +86,47 @@ function JourneyContent() {
     });
   }, [t]);
 
+  const scrollToSection = (index: number) => {
+    const sections = document.querySelectorAll(".journey-focus-section");
+    const target = sections[index];
+    if (target) {
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = target.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <main className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 py-20 md:py-40">
+      {/* Quick Skip Links */}
+      <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 flex items-center gap-1.5 md:gap-2 p-1.5 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-500">
+        {translatedJourney.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => scrollToSection(i + 1)}
+            className={`
+              w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-[9px] md:text-[10px] font-mono transition-all duration-500 relative
+              ${activeIndex === i + 1
+                ? "bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.4)] scale-110 z-10"
+                : "text-white/40 hover:text-white hover:bg-white/10"
+              }
+            `}
+          >
+            {activeIndex === i + 1 && (
+              <span className="absolute -inset-1 rounded-full border border-orange-500/50 animate-ping opacity-20" />
+            )}
+            0{i + 1}
+          </button>
+        ))}
+      </div>
+
       {/* Hero Section */}
       <header
         data-index={0}

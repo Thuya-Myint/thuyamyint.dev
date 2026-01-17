@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { resend } from "@/lib/resend";
+import { getFooterEmailTemplate } from "./templates/footer-email-template";
 
 const schema = z.object({
   email: z.string().email("Invalid email address"),
@@ -45,12 +46,15 @@ export async function sendFooterEmail(
   const { email, message } = parsed.data;
 
   try {
+    const htmlContent = getFooterEmailTemplate(email, message);
+
     await resend.emails.send({
       from: "Portfolio <hello@thuyamyint.dev>",
       to: process.env.CONTACT_RECEIVER_EMAIL!,
       replyTo: email,
       subject: "New Portfolio Inquiry",
       text: `Sender: ${email}\n\nMessage:\n${message}`,
+      html: htmlContent,
     });
 
     return { success: true };

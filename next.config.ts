@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
+
 };
 
 export default nextConfig;

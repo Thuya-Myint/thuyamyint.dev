@@ -272,7 +272,7 @@ export default function Header() {
           </div>
         </div>
 
-        <nav className="flex flex-col items-start w-full gap-4 py-6 text-white">
+        <nav className="flex flex-col items-start w-full gap-2 py-6 text-white">
           {[...NAV_ITEMS, ...P_NAV].map(({ label, href, icon: Icon, scroll }) => {
             const isActive =
               (pathname === href) ||

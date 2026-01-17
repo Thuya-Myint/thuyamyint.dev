@@ -112,15 +112,15 @@ function JourneyContent() {
             key={i}
             onClick={() => scrollToSection(i + 1)}
             className={`
-              w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-[9px] md:text-[10px] font-mono transition-all duration-500 relative
+              w-8 h-8 md:w-10 md:h-10 cursor-pointer rounded-full flex items-center justify-center text-[9px] md:text-[10px] font-mono transition-all duration-500 relative
               ${activeIndex === i + 1
-                ? "bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.4)] scale-110 z-10"
+                ? "bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.8)] scale-110 z-10"
                 : "text-white/40 hover:text-white hover:bg-white/10"
               }
             `}
           >
             {activeIndex === i + 1 && (
-              <span className="absolute -inset-1 rounded-full border border-orange-500/50 animate-ping opacity-20" />
+              <span className="absolute -inset-1 rounded-full border border-orange-500/50 animate-ping opacity-80" />
             )}
             0{i + 1}
           </button>

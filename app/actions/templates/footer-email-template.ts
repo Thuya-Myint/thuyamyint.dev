@@ -5,7 +5,7 @@ export function getFooterEmailTemplate(email: string, message: string): string {
   return `
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
     <div style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); padding: 30px; text-align: center;">
-        <img src="https://thuyamyint.dev/tm.png" alt="Logo" style="width: 60px; height: 60px; border-radius: 50%; background: white; padding: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <img src="https://thuyamyint.dev/t.png" alt="Logo" style="width: 60px; height: 60px; border-radius: 50%; background: white; padding: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
         <h1 style="color: white; margin: 15px 0 0 0; font-size: 24px; font-weight: 700;">New Inquiry</h1>
     </div>
     <div style="padding: 30px; color: #333333;">

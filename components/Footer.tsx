@@ -81,8 +81,8 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-black/10 border-t border-neutral-600/40">
       {/* ===== Ambient Background ===== */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-0 h-[600px] w-[600px] rounded-full bg-emerald-500/10 blur-[100px]" />
-        <div className="absolute right-1/4 bottom-0 h-[600px] w-[600px] rounded-full bg-blue-500/10 blur-[10cha0px]" />
+        <div className="absolute left-1/4 top-0 h-[600px] w-[600px] rounded-full bg-emerald-500/10 blur-[140px]" />
+        <div className="absolute right-1/4 bottom-0 h-[600px] w-[600px] rounded-full bg-blue-500/10 blur-[140px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto p-6">

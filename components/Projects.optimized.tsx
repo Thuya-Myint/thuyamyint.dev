@@ -166,7 +166,7 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <section id="projects" className="px-4 sm:px-6 lg:px-12 py-20">
+      <section id="projects" className="px-4 sm:px-6  ">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-2xl border-l-4 border-green-400 pl-3">
             {t("projects")}

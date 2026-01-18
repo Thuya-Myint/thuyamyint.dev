@@ -148,9 +148,9 @@ export default function TechStacks() {
   }, []);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section className="mx-auto max-w-6xl px-6">
       {/* Header */}
-      <div className="mb-20 max-w-3xl">
+      <div className="mb-10 max-w-3xl">
 
         <h2 className="mb-6 text-3xl font-semibold  flex gap-2 items-center tracking-tight">
           <GrAd className="text-green-400" />

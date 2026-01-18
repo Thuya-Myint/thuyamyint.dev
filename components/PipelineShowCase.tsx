@@ -123,8 +123,8 @@ export default function PipelineShowCase() {
             overflow-hidden
           "
           style={{
-            overscrollBehavior: "none",
-            touchAction: "none",
+            overscrollBehavior: "contain",
+            touchAction: "pan-y",
           }}
         >
           {displayed.map((line, index) => (

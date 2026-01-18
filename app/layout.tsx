@@ -16,17 +16,28 @@ const quicksand = Quicksand({
 
 /* ================= METADATA ================= */
 export const metadata: Metadata = {
-  title: "Thuya Myint – Developer Portfolio",
-  description: "Welcome to my portfolio and projects showcase.",
+  metadataBase: new URL("https://www.thuyamyint.dev"),
+  title: {
+    default: "Thuya Myint – Full Stack Developer Portfolio",
+    template: "%s | Thuya Myint",
+  },
+  description: "Full Stack Developer specializing in React, Next.js, and modern web technologies. Explore my projects and professional journey.",
+  keywords: ["Thuya Myint", "Full Stack Developer", "React Developer", "Next.js Portfolio", "Software Engineer"],
+  authors: [{ name: "Thuya Myint" }],
+  creator: "Thuya Myint",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Thuya Myint – Developer Portfolio",
-    description: "Welcome to my portfolio and projects showcase.",
+    title: "Thuya Myint – Full Stack Developer Portfolio",
+    description: "Explore the portfolio and projects of Thuya Myint, a Full Stack Developer specializing in modern web technologies.",
     url: "https://www.thuyamyint.dev",
     siteName: "Thuya Myint",
     type: "website",
+    locale: "en_US",
     images: [
       {
-        url: "https://www.thuyamyint.dev/assets/share.png",
+        url: "/assets/share.png",
         width: 1200,
         height: 630,
         alt: "Thuya Myint Portfolio",
@@ -35,9 +46,20 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thuya Myint – Developer Portfolio",
-    description: "Welcome to my portfolio and projects showcase.",
-    images: ["https://www.thuyamyint.dev/assets/share.png"],
+    title: "Thuya Myint – Full Stack Developer Portfolio",
+    description: "Explore the portfolio and projects of Thuya Myint, a Full Stack Developer specializing in modern web technologies.",
+    images: ["/assets/share.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -87,13 +109,13 @@ export default function RootLayout({
                  */}
 
                 {/* Green/Emerald Bubble */}
-                <div className="absolute top-[20%] left-[15%] w-80 h-80 bg-white/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob" />
+                <div className="absolute top-[20%] left-[15%] w-80 h-80 bg-white/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob will-change-transform" />
 
                 {/* Blue/Cyan Bubble */}
-                <div className="absolute top-[25%] right-[15%] w-80 h-80 bg-blue-600/60 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-2000" />
+                <div className="absolute top-[25%] right-[15%] w-80 h-80 bg-blue-600/60 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-2000 will-change-transform" />
 
                 {/* Teal/Bottom Bubble (Made this one significantly larger) */}
-                <div className="absolute -bottom-32 left-[40%] w-[500px] h-[500px] bg-red-400/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-4000" />
+                <div className="absolute -bottom-32 left-[40%] w-[500px] h-[500px] bg-red-400/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-4000 will-change-transform" />
               </div>
 
               {/* ================= CORNER LIGHT BUBBLES (EXISTING) ================= */}
@@ -128,6 +150,23 @@ export default function RootLayout({
             <SpeedInsights />
             <main className="relative z-10">{children}</main>
             <Footer />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "Person",
+                  name: "Thuya Myint",
+                  url: "https://www.thuyamyint.dev",
+                  jobTitle: "Full Stack Developer",
+                  sameAs: [
+                    "https://github.com/Thuya-Myint",
+                    "https://www.linkedin.com/in/thuya-myint-28ba4639a/",
+                    "https://www.facebook.com/thuya.myint.88143/",
+                  ],
+                }),
+              }}
+            />
           </div>
         </AppProvider>
       </body>

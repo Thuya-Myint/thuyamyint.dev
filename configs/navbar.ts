@@ -7,14 +7,12 @@ import { LuMousePointerClick } from "react-icons/lu";
 export const NAV_ITEMS = [
   { label: "intro", href: "intro", icon: FaWpbeginner, scroll: true },
   { label: "projects", href: "projects", icon: TbBrandCraft, scroll: true },
-  { label: "journey", href: "/journey", icon: GiJourney, scroll: false },
   { label: "experiences", href: "experiences", icon: MdDataThresholding, scroll: true },
+  { label: "journey", href: "/journey", icon: GiJourney, scroll: false },
 ];
 
 export const P_NAV = [
 
-  { label: "contact", href: "/contact", icon: MdOutlineContacts, scroll: false },
-  { label: "about", href: "/about", icon: GiSecretBook, scroll: false },
-  { label: "hire", href: "/hire", icon: LuMousePointerClick, scroll: false },
+  // { label: "hire", href: "/hire", icon: LuMousePointerClick, scroll: false },
 
 ]

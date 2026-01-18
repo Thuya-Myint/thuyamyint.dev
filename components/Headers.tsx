@@ -8,6 +8,7 @@ import Image from "next/image";
 
 import { SiTerraform } from "react-icons/si";
 import { VscTerminalBash } from "react-icons/vsc";
+import { HiOutlineDownload } from "react-icons/hi";
 import tm from "@/assets/images/tm.webp";
 
 import { useRouter, usePathname } from "next/navigation";
@@ -124,6 +125,17 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (hamburgerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [hamburgerOpen]);
 
   return (
     <header
@@ -182,8 +194,8 @@ export default function Header() {
         </nav>
 
         {/* Desktop Right Actions */}
-        <div className="hidden cursor-pointer lg:grid grid-cols-2 place-content-center gap-3">
-          <div className="relative cursor-pointer" ref={modalRef}>
+        <div className="hidden lg:flex items-center gap-3">
+          <div className="relative flex items-center" ref={modalRef}>
             <button
               onClick={() => setIsModalOpen((prev) => !prev)}
               aria-label="Toggle profile menu"
@@ -198,11 +210,12 @@ export default function Header() {
 
             {isModalOpen && (
               <div
-                className="
-                  absolute p-2 right-0 w-44 mt-2
+                className={`
+                  absolute p-2 right-0 top-10 w-48 mt-2
                   rounded-xl bg-[#0b0e14]
                   border border-neutral-700 shadow-xl z-50
-                "
+
+                `}
               >
                 {P_NAV.map(({ label, href, icon: Icon }) => (
                   <Link
@@ -220,6 +233,20 @@ export default function Header() {
                     {t(label)}
                   </Link>
                 ))}
+                <a
+                  href="/thuyamyint_rirekisho.pdf"
+                  download="thuyamyint_rirekisho.pdf"
+                  onClick={() => setIsModalOpen(false)}
+                  className="
+                    flex items-center cursor-pointer gap-2 px-4 py-2 text-white
+                    hover:text-black
+                    hover:bg-linear-to-r hover:from-green-100 rounded-lg hover:to-blue-100
+                    transition
+                  "
+                >
+                  <HiOutlineDownload size={18} />
+                  {t("resume")}
+                </a>
               </div>
             )}
           </div>
@@ -268,7 +295,6 @@ export default function Header() {
           </div>
           <div className="flex flex-col text-white">
             <span className="text-sm font-semibold">{t("title")}</span>
-            <span className="text-xs text-neutral-300">{t("viewProfile")}</span>
           </div>
         </div>
 
@@ -294,6 +320,20 @@ export default function Header() {
               </button>
             );
           })}
+          <a
+            href="/thuyamyint_rirekisho.pdf"
+            download="thuyamyint_rirekisho.pdf"
+            onClick={() => setHamburgerOpen(false)}
+            className="
+              flex items-center w-full gap-3
+              text-sm font-medium py-3 px-4 rounded-xl
+              transition-all duration-300
+              hover:bg-white/5
+            "
+          >
+            <HiOutlineDownload size={18} />
+            {t("resume")}
+          </a>
         </nav>
 
         <div

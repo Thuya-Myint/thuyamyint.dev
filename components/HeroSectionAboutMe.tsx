@@ -151,7 +151,7 @@ export default function HeroSectionAboutMe() {
       },
       {
         id: "linkedin",
-        href: "https://www.linkedin.com/in/thuya-myint-28ba4639a/",
+        href: "https://www.linkedin.com/in/thuya-myint-28ba4639a?message=Hello%20I%20found%20your%20portfolio",
         className:
           "bg-linear-to-br from-blue-200/40 to-black shadow-blue-400/40 hover:from-blue-400 hover:shadow-xl",
         icon: <SiLinkedin className="text-blue-500" />,
@@ -193,9 +193,10 @@ export default function HeroSectionAboutMe() {
         icon: (
           <Image
             src="https://res.cloudinary.com/dnqq3putc/image/upload/v1767749609/nexa_gsjaqw.png"
-            alt="Nexa Core IT Solution"
+            alt="Nexa Core IT Solution Logo"
             width={32}
             height={32}
+            priority
           />
         ),
       },

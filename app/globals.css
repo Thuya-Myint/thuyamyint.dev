@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -109,10 +110,12 @@ body {
 
 .animate-floatSlow {
   animation: floatSlow 24s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-floatSlower {
   animation: floatSlower 30s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-circuit-fast {
@@ -128,6 +131,7 @@ body {
 @layer utilities {
   .animate-blob {
     animation: blob 7s infinite;
+    will-change: transform;
   }
   .animate-scan-line {
     animation: scan-move 8s linear infinite;
@@ -198,6 +202,7 @@ body {
     @apply transition-all duration-1000 ease-in-out;
     opacity: 0.3;
     transform: scale(0.95);
+    will-change: transform, opacity;
   }
 
   .journey-focus-section.is-active {

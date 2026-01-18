@@ -215,7 +215,7 @@ function JourneyContent() {
   return (
     <main className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-6 py-20 md:py-40">
       {/* Quick Skip Links */}
-      <div className={`fixed top-24 left-1/2 -translate-x-1/2 z-40 flex items-center gap-1.5 md:gap-2 p-1.5 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-500 ${activeIndex === 0
+      <div className={`fixed top-24 left-1/2 -translate-x-1/2 z-40 flex items-center gap-1.5 md:gap-2 p-1.5 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-500 ${activeIndex === 0 || activeIndex > 6
         ? "opacity-0 pointer-events-none -translate-y-4"
         : "opacity-100 translate-y-0"
         }`}>
@@ -318,7 +318,7 @@ function JourneyContent() {
             {t("journey_footer_title")} <span className="text-orange-500">{t("journey_footer_subtitle")}</span>
           </h2>
           <button
-            onClick={() => (window.location.href = "/#contact")}
+            onClick={() => (window.location.href = "/#intro")}
             className="group relative px-16 py-8 bg-white text-black font-black uppercase tracking-[0.8em] text-xs overflow-hidden transition-all hover:scale-105 active:scale-95"
           >
             <div className="absolute inset-0 bg-orange-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://thuyamyint.dev/sitemap.xml',
+    sitemap: 'https://www.thuyamyint.dev/sitemap.xml',
   };
 }

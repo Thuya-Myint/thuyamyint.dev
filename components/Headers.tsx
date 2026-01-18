@@ -217,7 +217,7 @@ export default function Header() {
 
                 `}
               >
-                {P_NAV.map(({ label, href, icon: Icon }) => (
+                {/* {P_NAV.map(({ label, href, icon: Icon }) => (
                   <Link
                     key={href}
                     href={href}
@@ -229,10 +229,12 @@ export default function Header() {
                       transition
                     "
                   >
-                    <Icon size={18} />
+                    {
+                      Icon && <Icon size={18} />
+                    }
                     {t(label)}
                   </Link>
-                ))}
+                ))} */}
                 <a
                   href="/thuyamyint_rirekisho.pdf"
                   download="thuyamyint_rirekisho.pdf"
@@ -299,7 +301,7 @@ export default function Header() {
         </div>
 
         <nav className="flex flex-col items-start w-full gap-2 py-6 text-white">
-          {[...NAV_ITEMS, ...P_NAV].map(({ label, href, icon: Icon, scroll }) => {
+          {[...NAV_ITEMS].map(({ label, href, icon: Icon, scroll }) => {
             const isActive =
               (pathname === href) ||
               (scroll && pathname === "/" && activeSection === href);

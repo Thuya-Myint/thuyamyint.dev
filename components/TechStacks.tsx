@@ -3,10 +3,29 @@
 import { useEffect, useRef, useState, memo } from "react";
 import { techStacks } from "@/configs/techstacks";
 import { useApp } from "@/context/AppProvider";
-import { GrAd } from "react-icons/gr"
+import { GrAd } from "react-icons/gr";
+import { IconType } from "react-icons";
+
+interface TechIcon {
+  icon: IconType;
+  color: string;
+  label?: string;
+}
+
+interface AdditionalLibrary {
+  text: string;
+  color: string;
+}
+
+interface TechStack {
+  id: string;
+  icons: TechIcon[];
+  descriptionKey: string;
+  additionalLibraries?: AdditionalLibrary[];
+}
 
 interface TechStackItemProps {
-  stack: any;
+  stack: TechStack;
   index: number;
   isActive: boolean;
   isLast: boolean;
@@ -53,7 +72,7 @@ const TechStackItem = memo(function TechStackItem({
       <div className="flex flex-col gap-8 sm:flex-row sm:gap-10">
         {/* Icons */}
         <div className="flex flex-row sm:flex-col items-start sm:items-center gap-4 sm:gap-4">
-          {stack.icons.map(({ icon: Icon, color }: any, i: number) => (
+          {stack.icons.map(({ icon: Icon, color }: TechIcon, i: number) => (
             <div
               key={i}
               className={`flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-500 ${isActive
@@ -77,9 +96,9 @@ const TechStackItem = memo(function TechStackItem({
             {t(stack.descriptionKey)}
           </p>
 
-          {stack.additionalLibraries?.length > 0 && (
+          {stack.additionalLibraries && stack.additionalLibraries.length > 0 && (
             <div className="mt-6 flex flex-wrap gap-3">
-              {stack.additionalLibraries.map((lib: any) => (
+              {stack.additionalLibraries.map((lib: AdditionalLibrary) => (
                 <span
                   key={lib.text}
                   className={`rounded-md border px-3 py-1 text-xs transition-all duration-500 ${isActive

@@ -9,6 +9,7 @@ export const NAV_ITEMS = [
   { label: "projects", href: "projects", icon: TbBrandCraft, scroll: true },
   { label: "experiences", href: "experiences", icon: MdDataThresholding, scroll: true },
   { label: "journey", href: "/journey", icon: GiJourney, scroll: false },
+  { label: "blog", href: "/blog", icon: GiSecretBook, scroll: false },
 ];
 
 export const P_NAV = [

@@ -28,7 +28,7 @@ export const projects = [
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536267/shop5_fuxuxt.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536266/shop4_ebl9ek.png",
       "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536265/shop3_bsnwap.png",
-      "https://res.cloudinary.com/dnqq3putc/image/upload/v1767536265/shop6_mvtyd0.png",
+
     ],
     stacks: [
       "React",

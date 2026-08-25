@@ -1,7 +1,7 @@
 export default function Blog() {
   return (
     <div>
-      Blog Comming Soon!
+      Blog Coming Soon!
     </div>
   )
 }

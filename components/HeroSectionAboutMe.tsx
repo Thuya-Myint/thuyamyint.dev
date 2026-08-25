@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useCallback, useMemo, useRef, startTransition } from "react";
 import { useApp } from "@/context/AppProvider";
-import { SiFacebook, SiGithub, SiLinkedin, SiLine } from "react-icons/si";
+import { SiFacebook, SiGithub, SiLine } from "react-icons/si";
+import { BsLinkedin } from "react-icons/bs";
 import { MdOutgoingMail, MdPhone } from "react-icons/md";
 import Image from "next/image";
 
@@ -154,7 +155,7 @@ export default function HeroSectionAboutMe() {
         href: "https://www.linkedin.com/in/thuya-myint-28ba4639a?message=Hello%20I%20found%20your%20portfolio",
         className:
           "bg-linear-to-br from-blue-200/40 to-black shadow-blue-400/40 hover:from-blue-400 hover:shadow-xl",
-        icon: <SiLinkedin className="text-blue-500" />,
+        icon: <BsLinkedin className="text-blue-500" />,
       },
       {
         id: "email",
@@ -241,6 +242,7 @@ export default function HeroSectionAboutMe() {
             <a
               key={id}
               href={href}
+              aria-label={id === "nexa" ? "Nexa Core IT Solution" : id[0].toUpperCase() + id.slice(1)}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
               onClick={() => {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import localFont from "next/font/local";
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from "@/components/Headers";
 import { AppProvider } from "@/context/AppProvider";
@@ -8,8 +8,8 @@ import Footer from "@/components/Footer";
 import ScrollHandler from "@/components/ScrollHandler";
 
 /* ================= FONT ================= */
-const quicksand = Quicksand({
-  subsets: ["latin"],
+const quicksand = localFont({
+  src: "../assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf",
   variable: "--font-quicksand",
   display: "swap",
 });
@@ -83,7 +83,7 @@ export default function RootLayout({
               <div className="absolute inset-0 bg-gradient-to-br from-black via-neutral-900 to-black" />
 
               {/* Diagonal cinematic texture */}
-              <div className="absolute inset-0 opacity-35 animate-diagonal-light">
+              <div className="absolute inset-0 opacity-20 motion-safe:animate-diagonal-light">
                 <div
                   className="absolute inset-[-50%]"
                   style={{
@@ -109,31 +109,31 @@ export default function RootLayout({
                  */}
 
                 {/* Green/Emerald Bubble */}
-                <div className="absolute top-[20%] left-[15%] w-80 h-80 bg-white/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob will-change-transform" />
+                <div className="absolute top-[20%] left-[15%] w-80 h-80 bg-white/15 rounded-full mix-blend-screen filter blur-[110px] opacity-40 motion-safe:animate-blob" />
 
                 {/* Blue/Cyan Bubble */}
-                <div className="absolute top-[25%] right-[15%] w-80 h-80 bg-blue-600/60 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-2000 will-change-transform" />
+                <div className="absolute top-[25%] right-[15%] w-80 h-80 bg-blue-600/40 rounded-full mix-blend-screen filter blur-[110px] opacity-45 motion-safe:animate-blob animation-delay-2000" />
 
                 {/* Teal/Bottom Bubble (Made this one significantly larger) */}
-                <div className="absolute -bottom-32 left-[40%] w-[500px] h-[500px] bg-red-400/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-4000 will-change-transform" />
+                <div className="absolute -bottom-32 left-[40%] w-[500px] h-[500px] bg-red-400/15 rounded-full mix-blend-screen filter blur-[120px] opacity-40 motion-safe:animate-blob animation-delay-4000" />
               </div>
 
               {/* ================= CORNER LIGHT BUBBLES (EXISTING) ================= */}
               {/* Top-left — emerald */}
-              <div className="absolute -top-64 -left-64 w-[520px] h-[520px] rounded-full bg-emerald-500/12 blur-[160px] animate-floatSlow will-change-transform" />
+              <div className="absolute -top-64 -left-64 w-[520px] h-[520px] rounded-full bg-emerald-500/10 blur-[180px] motion-safe:animate-floatSlow" />
 
               {/* Bottom-right — cyan/blue */}
-              <div className="absolute -bottom-72 -right-72 w-[600px] h-[600px] rounded-full bg-cyan-500/12 blur-[180px] animate-floatSlower will-change-transform" />
+              <div className="absolute -bottom-72 -right-72 w-[600px] h-[600px] rounded-full bg-cyan-500/10 blur-[200px] motion-safe:animate-floatSlower" />
 
               {/* Bottom-left — subtle blue fill */}
-              <div className="absolute -bottom-80 -left-80 w-[700px] h-[700px] rounded-full bg-blue-500/8 blur-[200px] animate-floatSlow will-change-transform" />
+              <div className="absolute -bottom-80 -left-80 w-[700px] h-[700px] rounded-full bg-blue-500/6 blur-[220px] motion-safe:animate-floatSlow" />
 
               {/* Vignette (keeps focus center clean) */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent_0%,rgba(0,0,0,0.7)_72%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent_0%,rgba(0,0,0,0.5)_72%)]" />
 
               {/* Infra grid (very subtle) */}
               <div
-                className="absolute inset-0 opacity-[0.035]"
+                className="absolute inset-0 opacity-[0.02]"
                 style={{
                   backgroundImage: `
                     linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),

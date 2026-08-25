@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, memo } from "react"
+import { useState, useEffect, useCallback, useRef, memo } from "react"
 import Image from "next/image"
 import { BsX, BsImages } from "react-icons/bs"
 import { useApp } from "@/context/AppProvider"
@@ -90,25 +90,41 @@ const ProjectModal = memo(function ProjectModal({
   onClose: () => void
 }) {
   const { t } = useApp()
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow
     document.body.style.overflow = "hidden"
-    return () => {
-      document.body.style.overflow = ""
+    closeButtonRef.current?.focus()
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose()
     }
-  }, [])
+
+    document.addEventListener("keydown", handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [onClose])
 
   return (
-    <div className="fixed inset-0 overflow-auto bg-black/80 backdrop-blur-sm z-50">
+    <div
+      className="fixed inset-0 overflow-auto bg-black/80 backdrop-blur-sm z-50"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-modal-title"
+    >
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6 mt-20">
           <div className="w-full">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl text-green-400">
+              <h2 id="project-modal-title" className="text-xl text-green-400">
                 {t(project.title)}
               </h2>
               <button
                 onClick={onClose}
+                ref={closeButtonRef}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
                 aria-label="Close"
               >

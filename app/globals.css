@@ -11,6 +11,11 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
+*:focus-visible {
+  outline: 2px solid #4ade80;
+  outline-offset: 3px;
+}
+
 body {
   font-family: var(--font-quicksand);
 }
@@ -101,21 +106,19 @@ body {
 }
 
 .animate-slow-pan {
-  animation: slow-pan 45s linear infinite;
+  animation: slow-pan 70s linear infinite;
 }
 
 .animate-diagonal-light {
-  animation: diagonalLightMove 40s linear infinite;
+  animation: diagonalLightMove 70s ease-in-out infinite alternate;
 }
 
 .animate-floatSlow {
-  animation: floatSlow 24s ease-in-out infinite;
-  will-change: transform;
+  animation: floatSlow 36s ease-in-out infinite;
 }
 
 .animate-floatSlower {
-  animation: floatSlower 30s ease-in-out infinite;
-  will-change: transform;
+  animation: floatSlower 44s ease-in-out infinite;
 }
 
 .animate-circuit-fast {
@@ -130,8 +133,7 @@ body {
 
 @layer utilities {
   .animate-blob {
-    animation: blob 7s infinite;
-    will-change: transform;
+    animation: blob 12s ease-in-out infinite;
   }
   .animate-scan-line {
     animation: scan-move 8s linear infinite;
@@ -207,5 +209,20 @@ body {
 
   .journey-focus-section.is-active {
     @apply opacity-100 scale-100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

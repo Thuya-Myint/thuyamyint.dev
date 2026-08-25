@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/contact`,
+      url: `${BASE_URL}/blog`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,

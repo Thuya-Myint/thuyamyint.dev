@@ -1,8 +1,7 @@
 "use client";
 
 import { useApp } from "@/context/AppProvider";
-import { NAV_ITEMS, P_NAV } from "@/configs/navbar";
-import Link from "next/link";
+import { NAV_ITEMS } from "@/configs/navbar";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 

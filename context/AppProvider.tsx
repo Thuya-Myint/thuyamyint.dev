@@ -19,7 +19,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   // ✅ External system sync (localStorage) — VALID useEffect
   useEffect(() => {
-    const storedLocale = getItemFromLocalStorage(StorageKey.Locale);
+    const storedLocale = getItemFromLocalStorage<Locale>(StorageKey.Locale);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (storedLocale) setLocale(storedLocale);
     setHydrated(true);

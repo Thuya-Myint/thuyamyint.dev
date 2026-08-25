@@ -5,7 +5,10 @@ export type WorkExperience = {
   position: string;
   period: string;
   descriptionKey: string;
+  focusKey: string;
+  highlightKeys: string[];
   website?: string;
+  profileUrl?: string;
   technologies?: string[];
 };
 
@@ -17,7 +20,10 @@ export const workExperiences: WorkExperience[] = [
     position: "Full-Stack Developer",
     period: "aboveOneYear",
     descriptionKey: "nexaCoreDescription",
+    focusKey: "nexaCoreFocus",
+    highlightKeys: ["nexaCoreHighlight1", "nexaCoreHighlight2", "nexaCoreHighlight3"],
     website: "https://nexacoreitsolution.com",
+    profileUrl: "https://nexacoreitsolution.com/thuyamyint",
     technologies: ["Next.js", "Node.js", "Go", "AWS", "Docker", "PostgreSQL"],
   },
   // Add more work experiences here

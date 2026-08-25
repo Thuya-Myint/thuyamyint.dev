@@ -80,7 +80,7 @@ export default function PipelineShowCase() {
 
   return (
     <div className="   mx-auto  relative cursor-pointer">
-      <div className="w-full h-full flex items-center  opacity-10 animate-pulse justify-center absolute">
+      <div className="w-full h-full flex items-center opacity-5 motion-safe:animate-[pulse_5s_ease-in-out_infinite] justify-center absolute">
         <VscTerminalBash className="text-white  " size={100} />
       </div>
       <div className="bg-[#0b0e14]   border border-neutral-700/80 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">

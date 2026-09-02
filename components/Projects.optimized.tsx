@@ -1,9 +1,11 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef, memo } from "react"
+import { useState, useEffect, useCallback, useRef, useSyncExternalStore, memo } from "react"
 import Image from "next/image"
 import { BsX, BsImages } from "react-icons/bs"
 import { useApp } from "@/context/AppProvider"
+import { createPortal } from "react-dom"
+import ProgressiveImage from "@/components/ProgressiveImage"
 
 type Project = {
   title: string
@@ -21,8 +23,6 @@ const ProjectCard = memo(function ProjectCard({
   onOpen: (project: Project) => void
 }) {
   const { t } = useApp()
-  const [loading, setLoading] = useState(true)
-
   const handleClick = useCallback(() => {
     onOpen(project)
   }, [project, onOpen])
@@ -33,14 +33,13 @@ const ProjectCard = memo(function ProjectCard({
       className="group text-left flex flex-col rounded-2xl overflow-hidden bg-linear-to-br from-white/15 to-black/30  hover:border-green-400/40 transition"
     >
       <div className="relative w-full h-44">
-        {loading && <div className="absolute inset-0 bg-white/10 animate-pulse" />}
         <Image
           src={`${project.image[0]}?c_fill,w_400,h_300,f_webp,q_auto`}
           alt={project.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition duration-300"
-          onLoad={() => setLoading(false)}
+          loading="lazy"
         />
         <div className="absolute bottom-2 right-2 flex items-center gap-1 text-xs bg-black/70 px-2 py-1 rounded-full">
           <BsImages />
@@ -63,20 +62,16 @@ const ProjectCard = memo(function ProjectCard({
 })
 
 const ModalImage = memo(function ModalImage({ img, index }: { img: string; index: number }) {
-  const [imgLoading, setImgLoading] = useState(true)
-
   return (
     <div className="break-inside-avoid rounded-xl overflow-hidden border border-white/10 relative">
-      {imgLoading && <div className="absolute inset-0 bg-white/10 animate-pulse" />}
-      <Image
-        src={`${img}?f_webp,q_auto`}
+      <ProgressiveImage
+        src={img}
         alt={`Project image ${index + 1}`}
         width={600}
         height={800}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         className="w-full h-auto object-contain"
         loading="lazy"
-        onLoad={() => setImgLoading(false)}
       />
     </div>
   )
@@ -91,6 +86,11 @@ const ProjectModal = memo(function ProjectModal({
 }) {
   const { t } = useApp()
   const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false,
+  )
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
@@ -108,14 +108,19 @@ const ProjectModal = memo(function ProjectModal({
     }
   }, [onClose])
 
-  return (
+  if (!mounted) return null
+
+  return createPortal((
     <div
-      className="fixed inset-0 overflow-auto bg-black/80 backdrop-blur-sm z-50"
+      className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-black/75 p-4 backdrop-blur-md sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
     >
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="mx-auto mt-12 max-w-6xl rounded-3xl border border-white/10 bg-[#0b0e14]/95 px-4 py-6 shadow-2xl shadow-black/50 sm:mt-16 sm:px-8 sm:py-8">
         <div className="flex items-center justify-between mb-6 mt-20">
           <div className="w-full">
             <div className="flex items-center justify-between">
@@ -126,7 +131,7 @@ const ProjectModal = memo(function ProjectModal({
                 onClick={onClose}
                 ref={closeButtonRef}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
-                aria-label="Close"
+                aria-label={t("close")}
               >
                 <BsX className="text-2xl" />
               </button>
@@ -165,7 +170,7 @@ const ProjectModal = memo(function ProjectModal({
         </div>
       </div>
     </div>
-  )
+  ), document.body)
 })
 
 export default function ProjectShowcase({ projects }: { projects: Project[] }) {
@@ -189,9 +194,9 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
           </h1>
 
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <ProjectCard
-                key={`${project.title}-${index}`}
+                key={project.title}
                 project={project}
                 onOpen={handleOpenProject}
               />

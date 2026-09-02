@@ -6,6 +6,7 @@ import { SiFacebook, SiGithub, SiLine } from "react-icons/si";
 import { BsLinkedin } from "react-icons/bs";
 import { MdOutgoingMail, MdPhone } from "react-icons/md";
 import Image from "next/image";
+import profilePortrait from "@/assets/images/profile-portrait-transparent-real.png";
 
 type ContactItem = {
   id: string;
@@ -207,7 +208,21 @@ export default function HeroSectionAboutMe() {
 
   /* ---------------- UI ---------------- */
   return (
-    <div className="flex text-2xl flex-col lg:max-w-2xl w-full items-start font-quicksand gap-4">
+    <div className="relative isolate flex w-full flex-col items-start gap-4 overflow-hidden rounded-[2rem] p-6 font-quicksand text-2xl sm:p-8 lg:max-w-2xl">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <Image
+          src={profilePortrait}
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-contain object-center opacity-75 brightness-110 contrast-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/10 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/35" />
+        <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10" />
+      </div>
+
       <h1 className="text-4xl font-extrabold tracking-tight text-white">
         {t("greeting")}
         <span className="text-green-400">{" " + t("title")}</span>

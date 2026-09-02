@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 type Scroll3DSectionProps = {
   children: ReactNode;
@@ -11,10 +11,7 @@ type Scroll3DSectionProps = {
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
-const baseStyle: CSSProperties = {
-  transform: "translate3d(0, 0, 0) scale(1)",
-  opacity: 1,
-};
+const baseTransform = "translate3d(0, 0, 0) scale(1)";
 
 export default function Scroll3DSection({
   children,
@@ -22,29 +19,29 @@ export default function Scroll3DSection({
   intensity = 1,
 }: Scroll3DSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const reducedMotionRef = useRef(false);
+  const disabledRef = useRef(false);
   const rafIdRef = useRef<number | null>(null);
-  const [style, setStyle] = useState<CSSProperties>(baseStyle);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
 
     const updatePreference = () => {
-      reducedMotionRef.current = mediaQuery.matches;
-      if (mediaQuery.matches) {
-        setStyle(baseStyle);
+      disabledRef.current = motionQuery.matches || mobileQuery.matches;
+      if (disabledRef.current && sectionRef.current) {
+        sectionRef.current.style.transform = baseTransform;
+        sectionRef.current.style.opacity = "1";
       }
     };
 
     updatePreference();
 
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", updatePreference);
-      return () => mediaQuery.removeEventListener("change", updatePreference);
-    }
-
-    mediaQuery.addListener(updatePreference);
-    return () => mediaQuery.removeListener(updatePreference);
+    motionQuery.addEventListener?.("change", updatePreference);
+    mobileQuery.addEventListener?.("change", updatePreference);
+    return () => {
+      motionQuery.removeEventListener?.("change", updatePreference);
+      mobileQuery.removeEventListener?.("change", updatePreference);
+    };
   }, []);
 
   useEffect(() => {
@@ -52,8 +49,9 @@ export default function Scroll3DSection({
       const section = sectionRef.current;
       if (!section) return;
 
-      if (reducedMotionRef.current) {
-        setStyle(baseStyle);
+      if (disabledRef.current) {
+        section.style.transform = baseTransform;
+        section.style.opacity = "1";
         return;
       }
 
@@ -70,10 +68,8 @@ export default function Scroll3DSection({
       const scale = 1 - clamp(distance * 0.03 * intensity, 0, 0.05);
       const opacity = 1 - clamp(distance * 0.15, 0, 0.2);
 
-      setStyle({
-        transform: `translate3d(0, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`,
-        opacity,
-      });
+      section.style.transform = `translate3d(0, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+      section.style.opacity = String(opacity);
     };
 
     const scheduleUpdate = () => {
@@ -102,7 +98,7 @@ export default function Scroll3DSection({
     <section
       ref={sectionRef}
       className={`relative transform-gpu [transform-style:preserve-3d] [backface-visibility:hidden] [perspective:1200px] motion-safe:will-change-transform ${className}`}
-      style={{ ...style, transition: "transform 180ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease-out" }}
+      style={{ transform: baseTransform, opacity: 1, transition: "transform 180ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease-out" }}
     >
       {children}
     </section>

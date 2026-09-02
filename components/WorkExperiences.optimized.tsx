@@ -3,7 +3,7 @@
 import { useApp } from "@/context/AppProvider"
 import { BsArrowRightShort, BsArrowUpRight, BsX } from "react-icons/bs"
 import Image from "next/image"
-import { memo, useCallback, useEffect, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { createPortal } from "react-dom"
 import { workExperiences } from "@/configs/workExperiences"
 
@@ -18,11 +18,11 @@ const ExperienceModal = memo(function ExperienceModal({
 }) {
   const { t } = useApp()
   const closeButtonRef = useRef<HTMLButtonElement>(null)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false,
+  )
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow

@@ -16,6 +16,11 @@ html {
   outline-offset: 3px;
 }
 
+.performance-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
 body {
   font-family: var(--font-quicksand);
 }

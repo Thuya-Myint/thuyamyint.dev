@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from "@/components/Headers";
 import { AppProvider } from "@/context/AppProvider";
-import "./globals.css";
+import "@/app/globals.css";
 import Footer from "@/components/Footer";
 import ScrollHandler from "@/components/ScrollHandler";
 
